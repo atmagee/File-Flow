@@ -14,8 +14,10 @@ def main():
         validation["extensions"],
         paths["processed"],
         paths["quarantine"],
-        validation["filename_pattern"]
-    )
+        validation["filename_pattern"],
+        paths["logs"],
+        paths["reports"]
+)
 
 
 if __name__ == "__main__":
