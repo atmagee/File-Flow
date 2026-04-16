@@ -1,18 +1,19 @@
-from pathlib import Path
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
 
 
 # Create a dataclass for files, that stores the data we need from each file for later manipulation
 @dataclass
 class FileMeta:
-    full_path: Path     # for moving the file
-    name: str       # for validating the naming scheme
-    extension: str      # for making sure the extension is on the valid extension list
-    last_modified: datetime     # for archiving old files
-    is_valid_name: bool = None    # returns true for a valid file and false for an invalid file
-    is_valid_extension: bool = None     # returns true for a valid extension and false for an invalid extension
-    is_valid_file: bool = None       # returns true for a valid file and false for an invalid file
+    full_path: Path  # for moving the file
+    name: str  # for validating the naming scheme
+    extension: str  # for making sure the extension is on the valid extension list
+    last_modified: datetime  # for archiving old files
+    category: str = None # used for classifying files later
+    is_valid_name: bool = None  # returns true for a valid file and false for an invalid file
+    is_valid_extension: bool = None  # returns true for a valid extension and false for an invalid extension
+    is_valid_file: bool = None  # returns true for a valid file and false for an invalid file
 
 
 # Defines a function that scans the files and returns a list of dataclasses
