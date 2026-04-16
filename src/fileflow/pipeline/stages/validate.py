@@ -1,18 +1,21 @@
 import re
 
 
-def load_extensions(file_path: str) -> list[str]:
-    with open(file_path, "r") as f:
-        return [
-            line.strip().lower()
-            for line in f
-            if line.strip() and not line.startswith("#")
-        ]
+def get_valid_extensions(config_extensions: dict) -> set:
 
-def validate_files(files: list, extensions_file: str, filename_pattern: str) -> list:
+    valid_extensions = set()
 
-    allowed_extensions = load_extensions(extensions_file)
+    for group in config_extensions.values():
+
+        valid_extensions.update(ext.lower() for ext in group)
+
+    return valid_extensions
+
+
+def validate_files(files: list, extensions_config: str, filename_pattern: str) -> list:
+
     pattern = re.compile(filename_pattern)
+    valid_extensions = get_valid_extensions(extensions_config)
 
     for file in files:
         filename = file.name
@@ -25,7 +28,7 @@ def validate_files(files: list, extensions_file: str, filename_pattern: str) -> 
             file.is_valid_name = False
 
         # Validate extension
-        if extension in allowed_extensions:
+        if extension in valid_extensions:
             file.is_valid_extension = True
         else:
             file.is_valid_extension = False
