@@ -3,6 +3,7 @@ from fileflow.pipeline.pipeline import run_pipeline
 
 
 def main():
+
     config = load_config()
 
     paths = config["paths"]
@@ -10,11 +11,12 @@ def main():
 
     run_pipeline(
         paths["input"],
-        validation["extensions_file"],
+        validation["extensions"],
         paths["processed"],
         paths["quarantine"],
         validation["filename_pattern"]
     )
+
 
 if __name__ == "__main__":
     main()

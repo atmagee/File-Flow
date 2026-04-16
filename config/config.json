@@ -9,6 +9,12 @@
   },
   "validation": {
     "filename_pattern": "^[a-z]+(_[a-z]+)*([0-9]+)?$",
-    "extensions_file": "config/extensions.txt"
+    "extensions": {
+      "text": ["txt", "md"],
+      "audio": ["mp3", "midi"],
+      "video": ["mp4, webm"],
+      "images": ["jpg", "png"],
+      "documents": ["pdf","docx"]
+    }
   }
 }
