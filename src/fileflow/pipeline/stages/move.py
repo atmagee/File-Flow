@@ -3,7 +3,6 @@ from pathlib import Path
 
 
 def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
-
     processed_path = Path(base_processed)
     quarantine_path = Path(quarantine_dir)
 
@@ -24,7 +23,8 @@ def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
 
         # Valid → processed
         else:
-            destination = processed_path / source.name
+            category_folder = processed_path / (file.category or "other")
+            destination = category_folder / source.name
 
         shutil.move(str(source), str(destination))
 

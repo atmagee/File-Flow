@@ -2,18 +2,15 @@ import re
 
 
 def get_valid_extensions(config_extensions: dict) -> set:
-
     valid_extensions = set()
 
     for group in config_extensions.values():
-
         valid_extensions.update(ext.lower() for ext in group)
 
     return valid_extensions
 
 
-def validate_files(files: list, extensions_config: str, filename_pattern: str) -> list:
-
+def validate_files(files: list, extensions_config: dict, filename_pattern: str) -> list:
     pattern = re.compile(filename_pattern)
     valid_extensions = get_valid_extensions(extensions_config)
 

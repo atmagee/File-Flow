@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="adding recreated project settings after they broke the colour coding in python files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +70,7 @@
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow\pipeline\stages" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.FileFlow">
+  <component name="RunManager" selected="Python.main">
     <configuration name="FileFlow" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,7 +135,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fileflow/main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\aaron\PycharmProjects\File-Flow\data\input\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -330,11 +329,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Shell Script.run.sh" />
         <item itemvalue="Python.settings" />
         <item itemvalue="Python.scan" />
         <item itemvalue="Python.pipeline" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -505,7 +504,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776339427006</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="adding recreated project settings after they broke the colour coding in python files">
+      <option name="closed" value="true" />
+      <created>1776341796979</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1776341796979</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -570,6 +577,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/test' into test" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
     <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
+    <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding recreated project settings after they broke the colour coding in python files" />
   </component>
 </project>
