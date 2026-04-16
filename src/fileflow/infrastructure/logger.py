@@ -1,8 +1,11 @@
 import logging
+from datetime import datetime
 from pathlib import Path
 
 
 def setup_logger(log_dir: str) -> logging.Logger:
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    log_file = Path(log_dir) / f"fileflow_{timestamp}.log"
 
     logger = logging.getLogger("fileflow")
     logger.setLevel(logging.INFO)
@@ -11,14 +14,19 @@ def setup_logger(log_dir: str) -> logging.Logger:
     if logger.handlers:
         return logger
 
-    log_file = Path(log_dir) / "fileflow.log"
-
-    file_handler = logging.FileHandler(log_file)
     formatter = logging.Formatter(
         "%(asctime)s | %(levelname)s | %(message)s"
     )
+
+    # File handler
+    file_handler = logging.FileHandler(log_file)
     file_handler.setFormatter(formatter)
 
+    # Console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+
     logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
 
     return logger

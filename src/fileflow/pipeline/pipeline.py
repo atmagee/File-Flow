@@ -1,5 +1,5 @@
-from fileflow.pipeline.stages import (scan_folder, validate_files, classify_files, move_files)
 from fileflow.infrastructure import setup_logger, generate_report
+from fileflow.pipeline.stages import (scan_folder, validate_files, classify_files, move_files)
 
 
 def run_pipeline(input_dir, extensions_config, processed_dir, quarantine_dir, filename_pattern, log_dir, report_dir):

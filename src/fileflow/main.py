@@ -3,7 +3,6 @@ from fileflow.pipeline.pipeline import run_pipeline
 
 
 def main():
-
     config = load_config()
 
     paths = config["paths"]
@@ -17,7 +16,7 @@ def main():
         validation["filename_pattern"],
         paths["logs"],
         paths["reports"]
-)
+    )
 
 
 if __name__ == "__main__":
