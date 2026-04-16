@@ -9,7 +9,11 @@ class FileMeta:
     name: str       # for validating the naming scheme
     extension: str      # for making sure the extension is on the valid extension list
     last_modified: datetime     # for archiving old files
+    is_valid_name: bool = None    # returns true for a valid file and false for an invalid file
+    is_valid_extension: bool = None     # returns true for a valid extension and false for an invalid extension
+    is_valid_file: bool = None       # returns true for a valid file and false for an invalid file
 
+# Defines a function that scans the files and returns a list of dataclasses
 def scan_folder(input_dir: str) -> list[FileMeta]:
     path = Path(input_dir)
 
