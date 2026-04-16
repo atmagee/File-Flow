@@ -14,7 +14,7 @@ I provided to you is met with the regex as well as examples showing valid and in
 
 ---
 
-Can you compare the regex you created to this one ^[a-z]+(?:_[a-z]+)*(?:[0-9]+|_[a-z]+[0-9]+)?\.(txt|pdf|xml)$
+Compare the regex you created to this one ^[a-z]+(?:_[a-z]+)*(?:[0-9]+|_[a-z]+[0-9]+)?\.(txt|pdf|xml)$
 
 Give the results in the form of a table comparing how robust and accurate they are as well as computational cost and any
 other parameters you believe are important as a senior data engineer. Provide reasoning for which one is chosen as
