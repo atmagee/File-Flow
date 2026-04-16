@@ -1,9 +1,6 @@
 import re
 
 
-FILENAME_PATTERN = re.compile(r'^[a-z]+(_[a-z]+)*([0-9]+)?$')
-
-
 def load_extensions(file_path: str) -> list[str]:
     with open(file_path, "r") as f:
         return [
@@ -12,16 +9,17 @@ def load_extensions(file_path: str) -> list[str]:
             if line.strip() and not line.startswith("#")
         ]
 
-def validate_files(files: list, extensions_file: str) -> list:
+def validate_files(files: list, extensions_file: str, filename_pattern: str) -> list:
 
     allowed_extensions = load_extensions(extensions_file)
+    pattern = re.compile(filename_pattern)
 
     for file in files:
-        filename = file.full_path.stem
+        filename = file.name
         extension = file.extension.lower()
 
         # Validate filename
-        if FILENAME_PATTERN.fullmatch(filename):
+        if pattern.fullmatch(filename):
             file.is_valid_name = True
         else:
             file.is_valid_name = False
