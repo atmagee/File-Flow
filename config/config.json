@@ -1,0 +1,14 @@
+{
+  "paths": {
+    "input": "data/input",
+    "processed": "data/processed",
+    "quarantine": "data/quarantine",
+    "archive": "data/archive",
+    "logs": "output/logs",
+    "reports": "output/reports"
+  },
+  "validation": {
+    "filename_pattern": "^[a-z]+(_[a-z]+)*([0-9]+)?$",
+    "extensions_file": "config/extensions.txt"
+  }
+}
