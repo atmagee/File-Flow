@@ -10,10 +10,7 @@ def main():
     setup_config = config.get("setup", {})
 
     # Setup environment
-    ensure_directories(
-        paths,
-        setup_config.get("create_missing_directories", True)
-    )
+    ensure_directories(config)
 
     # Run pipeline
     run_pipeline(

@@ -7,14 +7,25 @@
     "logs": "output/logs",
     "reports": "output/reports"
   },
+
+  "structure": {
+    "quarantine_subfolders": [
+      "invalid_filename",
+      "invalid_extension",
+      "invalid_both"
+    ],
+
+    "use_category_subfolders": true
+  },
+
   "validation": {
     "filename_pattern": "^[a-z]+(_[a-z]+)*([0-9]+)?$",
     "extensions": {
       "text": ["txt", "md"],
       "audio": ["mp3", "midi"],
-      "video": ["mp4, webm"],
+      "video": ["mp4", "webm"],
       "images": ["jpg", "png"],
-      "documents": ["pdf","docx"]
+      "documents": ["pdf", "docx"]
     }
   }
 }

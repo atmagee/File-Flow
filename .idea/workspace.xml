@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated logging and reporting to use a single run_id for tracking">
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Ensure if no directory is found one is made">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/a12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/abc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/blank.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/john123_a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/run_john.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -579,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776352896005</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Ensure if no directory is found one is made">
+      <option name="closed" value="true" />
+      <created>1776363200686</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776363200686</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -626,7 +639,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit:&#10;Setting up the file structure, creating temporary fiels in directories to inform future use and creating and logging the creation of the regex for file validation" />
     <MESSAGE value="Updated the list of extensions accepted and categorised them" />
     <MESSAGE value="Created test files" />
     <MESSAGE value="Added __init__ files for all package folders" />
@@ -651,6 +663,7 @@
     <MESSAGE value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
     <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
     <MESSAGE value="Updated logging and reporting to use a single run_id for tracking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated logging and reporting to use a single run_id for tracking" />
+    <MESSAGE value="Ensure if no directory is found one is made" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ensure if no directory is found one is made" />
   </component>
 </project>
