@@ -1,10 +1,15 @@
+from datetime import datetime
+
 from fileflow.infrastructure import setup_logger, generate_report
 from fileflow.pipeline.stages import (scan_folder, validate_files, classify_files, move_files)
 
 
 def run_pipeline(input_dir, extensions_config, processed_dir, quarantine_dir, filename_pattern, log_dir, report_dir):
-    logger = setup_logger(log_dir)
-    logger.info("Pipeline started")
+    # Create shared run_id
+    run_id = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    logger = setup_logger(log_dir, run_id)
+    logger.info(f"Pipeline started | run_id={run_id}")
 
     # 1. Scan
     files = scan_folder(input_dir)
@@ -19,20 +24,21 @@ def run_pipeline(input_dir, extensions_config, processed_dir, quarantine_dir, fi
     logger.info("Classification complete")
 
     # 4. Move
-    for file in files:
-        logger.info(
-            f"{file.full_path.name} | valid={file.is_valid_file} | "
-            f"name_valid={file.is_valid_name} | ext_valid={file.is_valid_extension} | "
-            f"category={file.category}"
-        )
-
     files = move_files(files, processed_dir, quarantine_dir)
     logger.info("Move complete")
 
     # 5. Report
-    generate_report(files, report_dir)
+    generate_report(files, report_dir, run_id)
     logger.info("Report generated")
 
-    logger.info("Pipeline finished")
+    logger.info(f"Pipeline finished | run_id={run_id}")
 
     return files
+
+
+"""    for file in files:
+        logger.info(
+            f"{file.full_path.name} | valid={file.is_valid_file} | "
+            f"name_valid={file.is_valid_name} | ext_valid={file.is_valid_extension} | "
+            f"category={file.category}"
+"""

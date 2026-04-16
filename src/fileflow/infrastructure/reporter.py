@@ -1,11 +1,8 @@
 import json
-from datetime import datetime
 from pathlib import Path
 
 
-def generate_report(files: list, output_dir: str):
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
+def generate_report(files: list, output_dir: str, run_id: str) -> None:
     total = len(files)
     valid = sum(1 for f in files if f.is_valid_file)
     invalid = total - valid
@@ -21,7 +18,7 @@ def generate_report(files: list, output_dir: str):
         category_counts[category] = category_counts.get(category, 0) + 1
 
     report = {
-        "timestamp": timestamp,
+        "run_id": run_id,
         "total_files": total,
         "valid_files": valid,
         "invalid_files": invalid,
@@ -31,12 +28,12 @@ def generate_report(files: list, output_dir: str):
         "categories": category_counts
     }
 
-    report_file = Path(output_dir) / f"report_{timestamp}.json"
+    report_file = Path(output_dir) / f"report_{run_id}.json"
     with open(report_file, "w") as f:
         json.dump(report, f, indent=4)
 
     print("\n=== FILEFLOW REPORT ===")
-    print(f"Timestamp: {timestamp}")
+    print(f"Run ID: {run_id}")
     print(f"Total files: {total}")
     print(f"Valid files: {valid}")
     print(f"Invalid files: {invalid}")

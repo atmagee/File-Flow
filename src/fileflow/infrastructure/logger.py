@@ -1,13 +1,11 @@
 import logging
-from datetime import datetime
 from pathlib import Path
 
 
-def setup_logger(log_dir: str) -> logging.Logger:
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    log_file = Path(log_dir) / f"fileflow_{timestamp}.log"
+def setup_logger(log_dir: str, run_id: str) -> logging.Logger:
+    log_file = Path(log_dir) / f"fileflow_{run_id}.log"
 
-    logger = logging.getLogger("fileflow")
+    logger = logging.getLogger(f"fileflow_{run_id}.log")
     logger.setLevel(logging.INFO)
 
     # Prevent duplicate handlers

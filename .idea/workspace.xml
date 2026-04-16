@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main">
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -562,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776348691885</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal">
+      <option name="closed" value="true" />
+      <created>1776351988983</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776351988983</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -632,6 +641,7 @@
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="Commit older backlog items" />
     <MESSAGE value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
+    <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
   </component>
 </project>
