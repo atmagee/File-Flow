@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="adding recreated project settings after they broke the colour coding in python files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" afterDir="false" />
-    </list>
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -512,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776341796979</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality">
+      <option name="closed" value="true" />
+      <created>1776342965877</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1776342965877</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -578,6 +579,7 @@
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
     <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
     <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding recreated project settings after they broke the colour coding in python files" />
+    <MESSAGE value="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
   </component>
 </project>
