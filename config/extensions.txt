@@ -1,0 +1,65 @@
+# Documents
+txt
+md
+rtf
+pdf
+doc
+docx
+odt
+
+# Data
+csv
+tsv
+xls
+xlsx
+ods
+json
+xml
+yaml
+yml
+
+# Images
+jpg
+jpeg
+png
+gif
+bmp
+tiff
+svg
+webp
+
+# Audio
+mp3
+wav
+aac
+flac
+ogg
+
+# Video
+mp4
+avi
+mkv
+mov
+wmv
+webm
+
+# Archives
+zip
+tar
+gz
+bz2
+7z
+rar
+
+# Code
+py
+js
+ts
+html
+css
+sh
+
+# Misc
+ini
+cfg
+env
