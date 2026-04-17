@@ -1,12 +1,15 @@
-def get_extension_category(extension: str, extensions_config: dict) -> str:
-    for category, ext_list in extensions_config.items():
-        if extension in ext_list:
-            return category
-    return "other"
+def build_extension_map(extensions_config: dict) -> dict:
+    return {
+        extension: category
+        for category, extensions in extensions_config.items()
+        for extension in extensions
+    }
 
-
-def classify_files(files: list, extensions_config: dict) -> list:
+def classify_files(files: list, extension_map: dict) -> list:
     for file in files:
-        file.category = get_extension_category(file.extension, extensions_config)
+        if file.is_valid_extension:
+            file.category = extension_map[file.extension]
+        else:
+            file.category = "invalid"
 
     return files

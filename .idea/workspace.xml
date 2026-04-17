@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="fixed a typo in pipeline that caused failure at runtime">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/a12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/abc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/blank.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/john123_a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/run_john.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo_data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,9 +37,31 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "atmagee"
+  }
+}]]></component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="2ecb44fd-1f57-46ee-a61a-1cb5ed311219" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/atmagee/File-Flow.git",
+    "accountId": "2ecb44fd-1f57-46ee-a61a-1cb5ed311219"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "atmagee",
+    "repository": "File-Flow"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -38,6 +74,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.FileFlow.executor": "Run",
+    "Python.main (1).executor": "Run",
     "Python.main.executor": "Run",
     "Python.pipeline.executor": "Run",
     "Python.scan.executor": "Debug",
@@ -45,25 +82,27 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SHELLCHECK.PATH": "C:\\Users\\aaron\\AppData\\Roaming\\JetBrains\\PyCharm2025.3\\plugins\\Shell Script\\shellcheck.exe",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "C:/Users/aaron/PycharmProjects/File-Flow",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "last_opened_file_path": "C:/Users/aaron/PycharmProjects/File-Flow/ai/logs/logs_and_reports",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\ai\logs\logs_and_reports" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\archive" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\input" />
-      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\config" />
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow" />
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\ai\logs\regex" />
-      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow\pipeline\stages" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main (1)">
     <configuration name="FileFlow" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -112,6 +151,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="File-Flow" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/fileflow" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fileflow/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="File-Flow" />
       <option name="ENV_FILES" value="" />
@@ -128,7 +190,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\aaron\PycharmProjects\File-Flow\data\input\main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,41 +206,14 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="src" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.9 (pythonProject)" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\aaron\PycharmProjects\File-Flow" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/fileflow/pipeline" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="scan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="src" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.9 (pythonProject)" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\aaron\PycharmProjects\File-Flow" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -314,19 +349,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.FileFlow" />
+      <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.pipeline" />
-      <item itemvalue="Python.scan" />
       <item itemvalue="Python.settings" />
       <item itemvalue="Shell Script.run.sh" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.pipeline" />
         <item itemvalue="Python.main" />
         <item itemvalue="Shell Script.run.sh" />
         <item itemvalue="Python.settings" />
-        <item itemvalue="Python.scan" />
-        <item itemvalue="Python.pipeline" />
       </list>
     </recent_temporary>
   </component>
@@ -513,7 +548,103 @@
       <option name="project" value="LOCAL" />
       <updated>1776342965877</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality">
+      <option name="closed" value="true" />
+      <created>1776342983667</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1776342983667</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Commit older backlog items">
+      <option name="closed" value="true" />
+      <created>1776346591778</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1776346591778</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main">
+      <option name="closed" value="true" />
+      <created>1776348691885</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1776348691885</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal">
+      <option name="closed" value="true" />
+      <created>1776351988983</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776351988983</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Updated logging and reporting to use a single run_id for tracking">
+      <option name="closed" value="true" />
+      <created>1776352896005</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1776352896005</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Ensure if no directory is found one is made">
+      <option name="closed" value="true" />
+      <created>1776363200686</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776363200686</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json">
+      <option name="closed" value="true" />
+      <created>1776364684863</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776364684863</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added file duplication, cleaned up file formatting and expanded reporting to include duplicates and increase clarity &#10;&#10;Also filled most __init__ files">
+      <option name="closed" value="true" />
+      <created>1776409880676</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1776409880676</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added exception handing in pipeline">
+      <option name="closed" value="true" />
+      <created>1776409971715</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1776409971715</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Updated AI log files">
+      <option name="closed" value="true" />
+      <created>1776410023703</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1776410023703</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Created a script to reset the /data directory to its original state for testing">
+      <option name="closed" value="true" />
+      <created>1776410101155</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1776410101155</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixed a typo in pipeline that caused failure at runtime">
+      <option name="closed" value="true" />
+      <created>1776410215420</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1776410215420</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +678,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="test" />
                       </list>
                     </value>
                   </entry>
@@ -560,13 +691,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit:&#10;Setting up the file structure, creating temporary fiels in directories to inform future use and creating and logging the creation of the regex for file validation" />
-    <MESSAGE value="Updated the list of extensions accepted and categorised them" />
-    <MESSAGE value="Created test files" />
-    <MESSAGE value="Added __init__ files for all package folders" />
-    <MESSAGE value="Updated scan file so that it now uses a dataclass when storing data on each file scanned" />
-    <MESSAGE value="First commit:&#10;Setting up the file structure, creating temporary files in directories to inform future use and creating and logging the creation of the regex for file validation" />
-    <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Added a __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
     <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Confingured __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
     <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Configured __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
     <MESSAGE value="Trimmed the directory tree to remove directories and folders that are unused at the moment" />
@@ -579,7 +703,19 @@
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
     <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
     <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
-    <MESSAGE value="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create the classify program to classify files before moving them and update all the other stages to work with this new functionality" />
+    <MESSAGE value="update workspace.xml" />
+    <MESSAGE value="update workspace.xml" />
+    <MESSAGE value="Commit older backlog items" />
+    <MESSAGE value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
+    <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
+    <MESSAGE value="Updated logging and reporting to use a single run_id for tracking" />
+    <MESSAGE value="Ensure if no directory is found one is made" />
+    <MESSAGE value="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json" />
+    <MESSAGE value="Added file duplication, cleaned up file formatting and expanded reporting to include duplicates and increase clarity &#10;&#10;Also filled most __init__ files" />
+    <MESSAGE value="Added exception handing in pipeline" />
+    <MESSAGE value="Updated AI log files" />
+    <MESSAGE value="Created a script to reset the /data directory to its original state for testing" />
+    <MESSAGE value="fixed a typo in pipeline that caused failure at runtime" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed a typo in pipeline that caused failure at runtime" />
   </component>
 </project>

@@ -1,5 +1,27 @@
+import re
 import shutil
 from pathlib import Path
+
+
+def get_unique_destination(destination: Path) -> Path:
+
+    if not destination.exists():
+        return destination
+
+    parent = destination.parent
+    suffix = destination.suffix
+    base = destination.stem
+
+    counter = 1
+
+    while True:
+        new_name = f"{base}_{counter}{suffix}"
+        new_path = parent / new_name
+
+        if not new_path.exists():
+            return new_path
+
+        counter += 1
 
 
 def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
@@ -23,11 +45,26 @@ def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
 
         # Valid → processed
         else:
-            category_folder = processed_path / (file.category or "other")
-            destination = category_folder / source.name
+            destination = processed_path / file.category / source.name
 
-        shutil.move(str(source), str(destination))
+        # Duplicate handling
+        original_destination = destination
+        destination = get_unique_destination(destination)
 
-        file.full_path = destination
+        file.is_duplicate = destination != original_destination
+
+        if file.is_duplicate:
+            match = re.search(r'_(\d+)$', destination.stem)
+            file.duplicate_index = int(match.group(1)) if match else 1
+        else:
+            file.duplicate_index = 0
+
+        # Ensure destination directory exists
+        try:
+            destination.parent.mkdir(parents = True, exist_ok = True)
+            shutil.move(str(source), str(destination))
+            file.full_path = destination
+        except Exception:
+            continue # log later
 
     return files
