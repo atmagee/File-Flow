@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from fileflow.infrastructure import setup_logger, generate_report
+from fileflow.infrastructure import setup_logger, generate_report, archive_processed_files
 from fileflow.pipeline.stages import scan_folder, validate_files,build_extension_map, classify_files, move_files
 
 
@@ -12,6 +12,7 @@ def run_pipeline(
         report_dir,
         filename_pattern,
         extensions_config,
+        archive_config,
         ):
 
     # Create shared run_id
@@ -54,7 +55,15 @@ def run_pipeline(
         logger.error(f"Move failed: {e}")
         return files
 
-    # 5. Log
+    # 5. Archive
+    if archive_config.get("enabled", False):
+        archived_count = archive_processed_files(
+            processed_dir,
+            archive_config.get("days_threshold", 30)
+            )
+        logger.info(f"Archived {archived_count} files")
+
+    # 6. Log
     for file in files:
         try:
             logger.info(
@@ -66,7 +75,7 @@ def run_pipeline(
         except Exception as e:
             logger.error(f"Logging failed for file {file.full_path}: {e}")
 
-    # 6. Report
+    # 7. Report
     try:
         generate_report(files, report_dir, run_id)
         logger.info("Report generated")
