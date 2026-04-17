@@ -25,7 +25,7 @@ The system is fully driven by configuration, making it easy to adapt to differen
 The pipeline follows a staged processing model:
 
 ```text
-Scan → Validate → Classify → Move → Log → Report
+Scan -> Validate -> Classify -> Move -> Log -> Report
 ```
 
 Each stage is modular, testable, and responsible for a single concern.
@@ -148,8 +148,8 @@ All behaviour is controlled via `config/config.json`.
 
 ### 4. Move
 
-* Valid files → `processed/<category>/`
-* Invalid files → `quarantine/<reason>/`
+* Valid files -> `processed/<category>/`
+* Invalid files -> `quarantine/<reason>/`
 * Handles duplicate filenames safely using incremental suffixes
 
 ---

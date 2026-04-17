@@ -19,7 +19,8 @@
 
   "archive": {
     "enabled": true,
-    "days_threshold": 30
+    "days_threshold": 30,
+    "subfolder_name": "archive"
   },
 
   "validation": {

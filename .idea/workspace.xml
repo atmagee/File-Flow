@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="fixed a typo in pipeline that caused failure at runtime">
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing">
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai/logs/backlog_items/backlog_items.md" beforeDir="false" afterPath="$PROJECT_DIR$/ai/logs/backlog_items/backlog_items.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/a12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/abc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/blank.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/john123_a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/run_john.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo_data.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
     </list>
@@ -644,7 +641,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776410215420</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing">
+      <option name="closed" value="true" />
+      <created>1776416345311</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1776416345311</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing">
+      <option name="closed" value="true" />
+      <created>1776416357412</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1776416357412</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing">
+      <option name="closed" value="true" />
+      <created>1776416367640</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1776416367640</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -691,7 +712,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Confingured __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
     <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Configured __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
     <MESSAGE value="Trimmed the directory tree to remove directories and folders that are unused at the moment" />
     <MESSAGE value="Added a run script for the bash shell&#10;&#10;Added more test files" />
@@ -699,7 +719,6 @@
     <MESSAGE value="renamed setting.py to settings.py and gave it a function to load the json config" />
     <MESSAGE value="updated run configurations" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json congif" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/test' into test" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
     <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
     <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
@@ -716,6 +735,8 @@
     <MESSAGE value="Updated AI log files" />
     <MESSAGE value="Created a script to reset the /data directory to its original state for testing" />
     <MESSAGE value="fixed a typo in pipeline that caused failure at runtime" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed a typo in pipeline that caused failure at runtime" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/test' into test" />
+    <MESSAGE value="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing" />
   </component>
 </project>

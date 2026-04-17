@@ -120,8 +120,8 @@ Make the tool actually useful—move files, log actions, and report results.
 
 #### 📁 File Movement
 
-* [ ] Move valid files → output folder
-* [ ] Move invalid files → quarantine folder
+* [ ] Move valid files -> output folder
+* [ ] Move invalid files -> quarantine folder
 * [ ] Preserve original filenames
 * [ ] Handle file overwrite conflicts
 
@@ -186,7 +186,7 @@ Make the project usable, portable, and presentable.
 
 * [ ] Prepare short demo:
 
-  * input → run → output → report
+  * input -> run -> output -> report
 
 ### 📦 Deliverables Completed
 
@@ -299,7 +299,7 @@ Don’t try to build everything at once. The risk in projects like this isn’t 
 
 👉 Build in thin vertical slices:
 
-* Scan → Validate → Move → Log → Report
+* Scan -> Validate -> Move -> Log -> Report
   Then refine.
 
 ---
