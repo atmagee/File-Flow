@@ -1,28 +1,14 @@
 #!/bin/bash
 
-INPUT_DIR="data/input"
-PROCESSED_DIR="data/processed"
-QUARANTINE_DIR="data/quarantine"
-OUTPUT_DIR="output"
+DEMO_ROOT="demo_data"
 
-echo "Resetting demo data..."
+echo "Resetting demo environment..."
 
-# -----------------------------
-# 1. Clear input directory
-# -----------------------------
-echo "Clearing input directory..."
-
-if [ -d "$INPUT_DIR" ]; then
-  rm -rf "$INPUT_DIR"/*
+if [ -d "$DEMO_ROOT" ]; then
+  rm -rf "$DEMO_ROOT"
 fi
 
-# -----------------------------
-# 2. Remove generated directories
-# -----------------------------
-echo "Removing generated directories..."
+# Recreate empty demo root + input
+mkdir -p "$DEMO_ROOT/demo_input"
 
-rm -rf "$PROCESSED_DIR"
-rm -rf "$QUARANTINE_DIR"
-rm -rf "$OUTPUT_DIR"
-
-echo "Reset complete."
+echo "Demo environment reset."

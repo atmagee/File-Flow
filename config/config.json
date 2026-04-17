@@ -1,25 +1,16 @@
 {
-  "paths": {
-    "input": "data/input",
-    "processed": "data/processed",
-    "quarantine": "data/quarantine",
-    "logs": "output/logs",
-    "reports": "output/reports"
-  },
-
   "structure": {
     "quarantine_subfolders": [
       "invalid_filename",
       "invalid_extension",
       "invalid_both"
-    ],
-
-    "use_category_subfolders": true
+    ]
   },
 
   "archive": {
     "enabled": true,
-    "days_threshold": 30
+    "days_threshold": 30,
+    "subfolder_name": "archive"
   },
 
   "validation": {

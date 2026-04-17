@@ -1,7 +1,8 @@
 from datetime import datetime
+from pathlib import Path
 
-from fileflow.infrastructure import setup_logger, generate_report, archive_processed_files
-from fileflow.pipeline.stages import scan_folder, validate_files,build_extension_map, classify_files, move_files
+from fileflow.infrastructure import setup_logger, format_log_event, generate_report, archive_processed_files
+from fileflow.pipeline.stages import scan_folder, validate_files, build_extension_map, classify_files, move_files
 
 
 def run_pipeline(
@@ -18,70 +19,155 @@ def run_pipeline(
     # Create shared run_id
     run_id = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    logger = setup_logger(log_dir, run_id)
-    logger.info(f"Pipeline started | run_id={run_id}")
-
     extension_map = build_extension_map(extensions_config)
+
+    logger = setup_logger(log_dir, run_id)
+
+    logger.info(
+        format_log_event(
+            {
+                "action": "system",
+                "message": f"Pipeline started | run_id={run_id}",
+                },
+            ),
+        )
+
+    print("\nTIME           ACTION         FILENAME              REASON                        ->RESULT")
+    print("-----------------------------------------------------------------------------------------------------------")
 
     # 1. Scan
     try:
         files = scan_folder(input_dir)
-        logger.info(f"Scanned {len(files)} files")
     except Exception as e:
-        logger.error(f"Scan failed: {e}")
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "SCAN_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
         return []
 
     # 2. Validate
     try:
         files = validate_files(files, extensions_config, filename_pattern)
-        logger.info("Validation complete")
     except Exception as e:
-        logger.error(f"Validation failed: {e}")
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "VALIDATE_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
         return files
 
     # 3. Classify
     try:
         files = classify_files(files, extension_map)
-        logger.info("Classification complete")
     except Exception as e:
-        logger.error(f"Classification failed: {e}")
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "CLASSIFY_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
         return files
 
     # 4. Move
     try:
-        files = move_files(files, processed_dir, quarantine_dir)
-        logger.info("Move complete")
+        files = move_files(files, processed_dir, quarantine_dir, logger)
     except Exception as e:
-        logger.error(f"Move failed: {e}")
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "MOVE_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
         return files
 
     # 5. Archive
-    if archive_config.get("enabled", False):
-        archived_count = archive_processed_files(
-            processed_dir,
-            archive_config.get("days_threshold", 30)
-            )
-        logger.info(f"Archived {archived_count} files")
+    try:
+        if archive_config.get("enabled", False):
 
-    # 6. Log
-    for file in files:
-        try:
+            if not Path(processed_dir).exists():
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "system",
+                            "message": "Archive skipped (no processed folder found)",
+                            },
+                        ),
+                    )
+            else:
+                archive_processed_files(
+                    files,
+                    processed_dir,
+                    archive_config.get("days_threshold", 30),
+                    archive_config.get("archive_subfolder_name", "archive"),
+                    logger,
+                    )
+
+        else:
             logger.info(
-                f"{file.full_path.name} | valid={file.is_valid_file} | "
-                f"name_valid={file.is_valid_name} | ext_valid={file.is_valid_extension} | "
-                f"category={file.category} | "
-                f"duplicate={file.is_duplicate} | dup_index={file.duplicate_index}"
+                format_log_event(
+                    {
+                        "action": "system",
+                        "message": "Archive skipped (disabled)",
+                        },
+                    ),
                 )
-        except Exception as e:
-            logger.error(f"Logging failed for file {file.full_path}: {e}")
 
-    # 7. Report
+    except Exception as e:
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "ARCHIVE_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
+
+    # 6. Report
     try:
         generate_report(files, report_dir, run_id)
-        logger.info("Report generated")
-    except Exception as e:
-        logger.error(f"Report generation failed: {e}")
+        logger.info(
+            format_log_event(
+                {
+                    "action": "system",
+                    "message": "Report generated",
+                    },
+                ),
+            )
 
-    logger.info(f"Pipeline finished | run_id={run_id}")
+    except Exception as e:
+        logger.info(
+            format_log_event(
+                {
+                    "action": "failed",
+                    "filename": "REPORT_STAGE",
+                    "error": str(e),
+                    },
+                ),
+            )
+
+    logger.info(
+        format_log_event(
+            {
+                "action": "system",
+                "message": f"Pipeline finished | run_id={run_id}",
+                },
+            ),
+        )
 
     return files

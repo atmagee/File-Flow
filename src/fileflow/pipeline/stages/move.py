@@ -2,6 +2,8 @@ import re
 import shutil
 from pathlib import Path
 
+from fileflow.infrastructure.logger import format_log_event
+
 
 def get_unique_destination(destination: Path) -> Path:
 
@@ -24,28 +26,34 @@ def get_unique_destination(destination: Path) -> Path:
         counter += 1
 
 
-def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
+def move_files(files: list, base_processed: str, quarantine_dir: str, logger) -> list:
     processed_path = Path(base_processed)
     quarantine_path = Path(quarantine_dir)
 
     for file in files:
         source = file.full_path
 
-        # Invalid → quarantine subfolders
+        # Invalid -> quarantine subfolders
         if not file.is_valid_file:
 
             if not file.is_valid_name and not file.is_valid_extension:
                 subfolder = "invalid_both"
+                reason = "invalid name and extension"
             elif not file.is_valid_name:
                 subfolder = "invalid_filename"
+                reason = "invalid naming format"
             else:
                 subfolder = "invalid_extension"
+                reason = "extension not allowed"
 
             destination = quarantine_path / subfolder / source.name
+            action_type = "quarantined"
 
-        # Valid → processed
+        # Valid -> processed
         else:
             destination = processed_path / file.category / source.name
+            action_type = "processed"
+            reason = "valid file"
 
         # Duplicate handling
         original_destination = destination
@@ -56,15 +64,53 @@ def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
         if file.is_duplicate:
             match = re.search(r'_(\d+)$', destination.stem)
             file.duplicate_index = int(match.group(1)) if match else 1
+
         else:
             file.duplicate_index = 0
 
-        # Ensure destination directory exists
+        # Move + Logging
         try:
             destination.parent.mkdir(parents = True, exist_ok = True)
             shutil.move(str(source), str(destination))
             file.full_path = destination
-        except Exception:
-            continue # log later
+
+            file.was_processed = True
+
+            # log duplicate
+            if file.is_duplicate:
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "renamed",
+                            "filename": source.name,
+                            "destination_path": str(destination),
+                            "reason": "duplicate filename",
+                            }
+                        )
+                    )
+
+            # log final action
+            logger.info(
+                format_log_event(
+                    {
+                        "action": action_type,
+                        "filename": source.name,
+                        "destination_path": str(destination),
+                        "reason": reason,
+                        }
+                    )
+                )
+
+        except Exception as e:
+            logger.info(
+                format_log_event(
+                    {
+                        "action": "failed",
+                        "filename": source.name,
+                        "error": str(e),
+                        },
+                    ),
+                )
+            continue
 
     return files

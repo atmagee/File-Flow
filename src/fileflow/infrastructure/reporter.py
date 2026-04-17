@@ -1,15 +1,17 @@
-import json
+import csv
 from pathlib import Path
 
 
-def generate_report(files: list, output_dir: str, run_id: str) -> None:
-    total = len(files)
+def generate_report(files: list, report_dir: str, run_id: str) -> None:
+    scanned = len(files)
     valid = sum(1 for f in files if f.is_valid_file)
-    invalid = total - valid
+    invalid = scanned - valid
 
-    processed = sum(1 for f in files if f.is_valid_file)
+    processed = sum(1 for f in files if f.is_valid_file and not f.is_duplicate)
     duplicates = sum(1 for f in files if f.is_duplicate)
-    quarantined = total - processed
+    quarantined = sum(1 for f in files if not f.is_valid_file)
+    archived = sum(1 for f in files if f.was_archived)
+
     invalid_name = sum(1 for f in files if not f.is_valid_name and f.is_valid_extension)
     invalid_ext = sum(1 for f in files if f.is_valid_name and not f.is_valid_extension)
     invalid_both = sum(1 for f in files if not f.is_valid_name and not f.is_valid_extension)
@@ -20,27 +22,42 @@ def generate_report(files: list, output_dir: str, run_id: str) -> None:
         category = f.category
         category_counts[category] = category_counts.get(category, 0) + 1
 
-    report = {
-        "run_id": run_id,
-        "total_files": total,
-        "processed_files": processed,
-        "duplicate_files": duplicates,
-        "quarantined_files": quarantined,
-        "invalid_name": invalid_name,
-        "invalid_extension": invalid_ext,
-        "invalid_both": invalid_both,
-        "categories": category_counts,
-        }
+    Path(report_dir).mkdir(parents = True, exist_ok = True)
+    report_file = Path(report_dir) / f"report_{run_id}.csv"
 
-    report_file = Path(output_dir) / f"report_{run_id}.json"
-    with open(report_file, "w") as f:
-        json.dump(report, f, indent = 4)
+    with open(report_file, "w", newline = "") as f:
+        writer = csv.writer(f)
 
+        # Run ID
+        writer.writerow(["run_id", run_id])
+        writer.writerow([])
+
+        # Metrics
+        writer.writerow(["metric", "value"])
+        writer.writerow(["scanned_files", scanned])
+        writer.writerow(["processed_files", processed])
+        writer.writerow(["duplicate_files", duplicates])
+        writer.writerow(["archived_files", archived])
+        writer.writerow(["quarantined_files", quarantined])
+        writer.writerow(["invalid_name", invalid_name])
+        writer.writerow(["invalid_extension", invalid_ext])
+        writer.writerow(["invalid_both", invalid_both])
+        writer.writerow([])
+
+        # Categories
+        writer.writerow(["category", "count"])
+        for category, count in category_counts.items():
+            writer.writerow([category, count])
+
+    # Console output
     print("\n=== FILEFLOW REPORT ===")
     print(f"\nRun ID: {run_id}")
-    print(f"\nTotal files: {total}")
+    print(f"\nScanned files: {scanned}")
+    print(f"\nValid files: {valid}")
     print(f"Processed files: {processed}")
     print(f"Duplicate files: {duplicates}")
+    print(f"Archived files: {archived}")
+    print(f"\nInvalid files: {invalid}")
     print(f"Quarantined files: {quarantined}")
     print(f"  - Invalid name: {invalid_name}")
     print(f"  - Invalid extension: {invalid_ext}")
