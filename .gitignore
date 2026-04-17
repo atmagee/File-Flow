@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# -----------------------------
+# FileFlow generated data
+# -----------------------------
+data/**/processed/
+data/**/quarantine/
+data/**/output/
+
+demo_data/**/processed/
+demo_data/**/quarantine/
+demo_data/**/output/
+
+# Logs & reports
+*.log
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db

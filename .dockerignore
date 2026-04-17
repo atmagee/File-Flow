@@ -2,9 +2,23 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
 .env
 .git
 .gitignore
-output/
-data/
+
+# Ignore runtime-generated data ONLY
+data/**/processed/
+data/**/quarantine/
+data/**/output/
+
+demo_data/**/processed/
+demo_data/**/quarantine/
+demo_data/**/output/
+
+# Logs & reports
+*.log
+*.csv
+
+# Exclude AI log
 ai/

@@ -10,5 +10,11 @@ COPY . .
 # Set Python path
 ENV PYTHONPATH=src
 
-# Run the app
-CMD ["python", "-m", "fileflow.main"]
+# Make scripts executable
+RUN chmod +x scripts/*.sh
+
+# Default entrypoint = your run script
+ENTRYPOINT ["./scripts/run.sh"]
+
+# Default command (can be overridden)
+CMD []
