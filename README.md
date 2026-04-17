@@ -20,12 +20,24 @@ The system is fully driven by configuration, making it easy to adapt to differen
 
 ---
 
-## 🧱 Architecture
+## 🔄 Pipeline Flow
 
 The pipeline follows a staged processing model:
 
 ```text
-Scan -> Validate -> Classify -> Move -> Log -> Report
+Input Folder
+     ↓
+  [Scan]
+     ↓
+[Validate] → Invalid → Quarantine
+     ↓
+[Classify]
+     ↓
+  [Move] → Processed
+     ↓
+ [Archive]
+     ↓
+[Report + Logs]
 ```
 
 Each stage is modular, testable, and responsible for a single concern.
@@ -38,65 +50,95 @@ Each stage is modular, testable, and responsible for a single concern.
 File-Flow/
 ├── config/
 │   └── config.json
+│
 ├── data/
-│   ├── input/
-│   ├── processed/
-│   ├── quarantine/
-│   └── archive/
-├── output/
-│   ├── logs/
-│   └── reports/
+│   └── default_input/
+│
+├── demo_data/
+│   └── demo_input/
+│
 ├── src/
 │   └── fileflow/
 │       ├── config/
+│       │   └── settings.py
+│       │
 │       ├── infrastructure/
+│       │   ├── archiver.py
+│       │   ├── logger.py
+│       │   └── reporter.py
+│       │
 │       ├── pipeline/
-│       │   ├── stages/
-│       │   │   ├── scan.py
-│       │   │   ├── validate.py
-│       │   │   ├── classify.py
-│       │   │   └── move.py
-│       │   └── pipeline.py
+│       │   ├── pipeline.py
+│       │   └── stages/
+│       │       ├── scan.py
+│       │       ├── validate.py
+│       │       ├── classify.py
+│       │       └── move.py
+│       │
 │       └── main.py
+│
 ├── scripts/
-│   └── run.sh
+│   ├── run.sh
+│   ├── create_demo_data.sh
+│   ├── reset_demo_data.sh
+│   └── run_docker_demo.sh
+│
+├── Dockerfile
+└── README.md
 ```
+
+---
+
+## 📁 Dynamic Folder Structure
+
+All output folders are created **relative to the chosen input directory at runtime**.
+
+Example (demo mode):
+
+```text
+demo_data/
+├── demo_input/
+├── processed/
+├── quarantine/
+└── output/
+    ├── logs/
+    └── reports/
+```
+
+Example (default mode):
+
+```text
+data/
+├── default_input/
+├── processed/
+├── quarantine/
+└── output/
+```
+
+This allows the tool to work with **any input location**.
 
 ---
 
 ## ⚙️ Configuration
 
-All behaviour is controlled via `config/config.json`.
+Core behaviour is controlled via `config/config.json`.
 
 ### Example:
 
 ```json
 {
-  "paths": {
-    "input": "data/input",
-    "processed": "data/processed",
-    "quarantine": "data/quarantine",
-    "archive": "data/archive",
-    "logs": "output/logs",
-    "reports": "output/reports"
-  },
-  "structure": {
-    "quarantine_subfolders": [
-      "invalid_filename",
-      "invalid_extension",
-      "invalid_both"
-    ],
-    "use_category_subfolders": true
-  },
   "validation": {
     "filename_pattern": "^[a-z]+(_[a-z]+)*(_[0-9]+)?$",
     "extensions": {
       "text": ["txt", "md"],
-      "audio": ["mp3", "midi"],
-      "video": ["mp4", "webm"],
       "images": ["jpg", "png"],
-      "documents": ["pdf", "docx"]
+      "documents": ["pdf"]
     }
+  },
+  "archive": {
+    "enabled": true,
+    "days_threshold": 30,
+    "subfolder_name": "archive"
   }
 }
 ```
@@ -122,15 +164,15 @@ All behaviour is controlled via `config/config.json`.
 
 ### 1. Scan
 
-* Reads files from the input directory
-* Extracts metadata into a structured `FileMeta` object
+* Reads files from input folder
+* Builds `FileMeta` objects
 
 ---
 
 ### 2. Validate
 
-* Applies regex-based filename validation
-* Checks extension against allowed list
+* Regex-based filename validation
+* Extension validation from config
 * Produces:
 
   * `is_valid_name`
@@ -141,117 +183,187 @@ All behaviour is controlled via `config/config.json`.
 
 ### 3. Classify
 
-* Maps valid extensions to categories
-* Invalid extensions are explicitly marked
+* Maps extensions → categories
+* Invalid files marked explicitly
 
 ---
 
 ### 4. Move
 
-* Valid files -> `processed/<category>/`
-* Invalid files -> `quarantine/<reason>/`
-* Handles duplicate filenames safely using incremental suffixes
+* Valid → `processed/<category>/`
+* Invalid → `quarantine/<reason>/`
+* Duplicate-safe renaming
 
 ---
 
-### 5. Logging
+### 5. Archive
 
-* Per-run log file using a unique `run_id`
-* Console + file logging
-* Per-file audit entries
+* Moves old processed files into:
+
+```text
+processed/<category>/archive/
+```
+
+* Based on configurable age threshold
+* Tracks archived files per run
 
 ---
 
-### 6. Reporting
+### 6. Logging
 
-* JSON report generated per run
+* Cross-cutting concern across all stages
+* Structured log output (console + file)
+* Full file paths included
+* Per-run `run_id`
+
+---
+
+### 7. Reporting
+
+* CSV report generated per run
 * Includes:
 
-  * total files
-  * valid / invalid counts
-  * breakdown of failure types
-  * category distribution
+  * processed
+  * quarantined
+  * duplicates
+  * archived files
+  * category breakdown
 
 ---
 
-## ▶️ Running the Pipeline
+## 🖥️ CLI Usage
 
-From project root:
+Run with:
 
 ```bash
 ./scripts/run.sh
 ```
 
+### Options:
+
+```bash
+--demo        Use demo dataset
+--input PATH  Use custom input folder
+```
+
+If no option is provided, the user is prompted to choose:
+
+* default input
+* demo input
+* custom path
+
+---
+
+## 🐳 Docker Support
+
+### Build image
+
+```bash
+docker build -t fileflow .
+```
+
+---
+
+### Run container
+
+```bash
+docker run -it \
+  -v "$(pwd -W)/demo_data:/app/demo_data" \
+  -v "$(pwd -W)/data:/app/data" \
+  fileflow --demo
+```
+
+---
+
+### Demo script (recommended)
+
+```bash
+./scripts/run_docker_demo.sh
+```
+
 This will:
 
-1. Load configuration
-2. Ensure required directories exist
-3. Execute the pipeline
-4. Output logs and reports
+1. Reset demo data
+2. Generate dataset
+3. Run container
+4. Persist outputs via mounted volumes
 
 ---
 
 ## 📊 Example Output
 
-### Processed Files
+### Processed
 
 ```text
-data/processed/text/example_file.txt
+demo_data/processed/text/report_1.txt
 ```
 
-### Quarantined Files
+### Quarantine
 
 ```text
-data/quarantine/invalid_filename/BadFile.txt
-data/quarantine/invalid_extension/file.exe
+demo_data/quarantine/invalid_filename/bad-name.txt
+```
+
+### Archive
+
+```text
+demo_data/processed/text/archive/old_file.txt
 ```
 
 ### Report
 
 ```text
-output/reports/report_2026-04-16_19-04-15.json
+demo_data/output/reports/report_<run_id>.csv
 ```
 
 ---
 
 ## 🧩 Design Principles
 
-* **Config-driven** – no hardcoded paths or rules
-* **Modular pipeline stages** – easy to extend or replace
-* **Deterministic behaviour** – consistent outputs per run
-* **Separation of concerns** – scanning, validation, and movement are isolated
-* **Safe file handling** – avoids overwriting via duplicate resolution
+* **Config-driven validation** – flexible rules without changing code
+* **Dynamic path resolution** – adapts to any input location at runtime
+* **Modular pipeline stages** – independently testable and extendable components
+* **Safe file operations** – avoids data loss through controlled movement and duplicate handling
+* **Reproducible Docker execution** – identical behaviour across environments
+* **Separation of concerns** – each stage handles a single responsibility
 
 ---
 
-## ⚠️ Current Limitations
+## ⚠️ Limitations
 
-* No archiving of older files yet
-* No CLI interface (arguments/menu)
-* Limited test coverage
-* Duplicate handling is filename-based (not content-based)
+* No content-based duplicate detection
+* No automated tests
 
 ---
 
-## 🛣️ Next Steps
+## 🛣️ Future Improvements
 
-* Implement archive lifecycle logic
-* Improve CLI usability
-* Add Docker support
-* Introduce automated tests
-* Enhance reporting (CSV / summaries)
+* Add unit tests
+* Improve commenting and hints
+* Add --help functionality
+* Improve CLI UX
+* Add scheduling support
+* Extend reporting (charts / summaries)
+* Add colour coding to logging for the different actions
 
 ---
 
 ## 📌 Summary
 
-This project demonstrates a clean, extensible approach to building a file processing pipeline using core data engineering principles:
+FileFlow is a **containerised, configurable file processing pipeline** that:
 
-* staged processing
-* configuration-driven behaviour
-* reproducible outputs
-* clear logging and observability
+* validates and organises files
+* handles invalid inputs safely
+* archives historical data
+* logs and reports every run
+* runs consistently via Docker
 
-It is designed to scale from a simple local utility into a more production-ready system with minimal structural changes.
+It demonstrates core engineering concepts:
+
+* pipeline architecture
+* configuration-driven design
+* containerisation
+* reproducibility
+* observability
 
 ---

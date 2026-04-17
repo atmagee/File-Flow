@@ -53,7 +53,7 @@ def format_log_event(event: dict) -> str:
 
     # RESULT LOGIC
     if action_key == "renamed":
-        result = Path(event["destination_path"]).name
+        result = event["destination_path"]
     elif action_key == "processed":
         result = event["destination_path"]
     elif action_key == "quarantined":

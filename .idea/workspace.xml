@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated Dockerfile and created a new script to run the docker demo">
-      <change beforePath="$PROJECT_DIR$/scripts/run_docker_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_docker_demo.sh" afterDir="false" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated README.md">
+      <change afterPath="$PROJECT_DIR$/ai/usage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -736,7 +738,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776455991252</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated Dockerfile and created a new script to run the docker demo now working properly">
+      <option name="closed" value="true" />
+      <created>1776458368105</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1776458368105</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Updated README.md">
+      <option name="closed" value="true" />
+      <created>1776461324508</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1776461324508</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Updated README.md">
+      <option name="closed" value="true" />
+      <created>1776461554477</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1776461554477</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -783,8 +809,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
-    <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
     <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="update workspace.xml" />
@@ -806,8 +830,10 @@
     <MESSAGE value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
     <MESSAGE value="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles" />
     <MESSAGE value="Updated Dockerfile, .gitignore, .dockerignore and fixed the reporting of the number of archive files counted" />
-    <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo" />
     <MESSAGE value="Merge remote-tracking branch 'origin/test' into test&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/test' into test&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo" />
+    <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo now working properly" />
+    <MESSAGE value="Updated README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
   </component>
 </project>
