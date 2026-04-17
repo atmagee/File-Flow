@@ -1,4 +1,4 @@
-You are a senior data engineer.
+You are a senior software engineer.
 
 You are building File-Flow, a lightweight command-line file processing tool for a shared team folder.
 
@@ -32,4 +32,5 @@ The deliverables are:
 
 For this project create backlog items to aid in timely completion of the project
 
-These should include a checklist, milestones and a progression path towards project completion. Suggest and present any additional backlog items that could be useful and state why.
+These should include a checklist, milestones and a progression path towards project completion. 
+Suggest and present any additional backlog items that could be useful and state why they are useful.
