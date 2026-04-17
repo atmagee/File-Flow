@@ -1,12 +1,13 @@
 import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
+
 from fileflow.infrastructure import format_log_event
 
 
 def archive_processed_files(processed_dir: str, days_threshold: int, archive_subfolder, logger) -> int:
     processed_path = Path(processed_dir)
-    cutoff = datetime.now() - timedelta(days=days_threshold)
+    cutoff = datetime.now() - timedelta(days = days_threshold)
 
     archived_count = 0
 
@@ -38,19 +39,27 @@ def archive_processed_files(processed_dir: str, days_threshold: int, archive_sub
                     shutil.move(str(file), str(destination))
                     archived_count += 1
 
-                    logger.info(format_log_event({
-                        "action": "archived",
-                        "filename": file.name,
-                        "destination_path": str(destination),
-                        "archive_folder": archive_subfolder,
-                        "reason": f"older than {days_threshold} days"
-                    }))
+                    logger.info(
+                        format_log_event(
+                            {
+                                "action": "archived",
+                                "filename": file.name,
+                                "destination_path": str(destination),
+                                "archive_folder": archive_subfolder,
+                                "reason": f"older than {days_threshold} days",
+                                },
+                            ),
+                        )
 
             except Exception as e:
-                logger.info(format_log_event({
-                    "action": "failed",
-                    "filename": file.name,
-                    "error": str(e)
-            }))
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "failed",
+                            "filename": file.name,
+                            "error": str(e),
+                            },
+                        ),
+                    )
 
     return archived_count

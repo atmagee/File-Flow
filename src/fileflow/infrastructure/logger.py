@@ -1,6 +1,7 @@
 import logging
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
 
 def setup_logger(log_dir: str, run_id: str) -> logging.Logger:
     log_file = Path(log_dir) / f"fileflow_{run_id}.log"
@@ -61,5 +62,3 @@ def format_log_event(event: dict) -> str:
         result = ""
 
     return f"[{time_str}] [{action}] {filename} {reason_str.ljust(30)} -> {result}"
-
-

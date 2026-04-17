@@ -1,6 +1,7 @@
 import re
 import shutil
 from pathlib import Path
+
 from fileflow.infrastructure import format_log_event
 
 
@@ -64,12 +65,16 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
             match = re.search(r'_(\d+)$', destination.stem)
             file.duplicate_index = int(match.group(1)) if match else 1
 
-            logger.info(format_log_event({
-                "action": "renamed",
-                "filename": source.name,
-                "destination_path": str(destination),
-                "reason": "duplicate filename"
-            }))
+            logger.info(
+                format_log_event(
+                    {
+                        "action": "renamed",
+                        "filename": source.name,
+                        "destination_path": str(destination),
+                        "reason": "duplicate filename",
+                        },
+                    ),
+                )
 
         else:
             file.duplicate_index = 0
@@ -81,28 +86,40 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
             file.full_path = destination
 
             if action_type == "processed":
-                logger.info(format_log_event({
-                    "action": "processed",
-                    "filename": source.name,
-                    "destination_path": str(destination),
-                    "reason": "valid file"
-                }))
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "processed",
+                            "filename": source.name,
+                            "destination_path": str(destination),
+                            "reason": "valid file",
+                            },
+                        ),
+                    )
 
             else:
-                logger.info(format_log_event({
-                    "action": "quarantined",
-                    "filename": source.name,
-                    "destination_path": str(destination),
-                    "reason": reason
-                }))
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "quarantined",
+                            "filename": source.name,
+                            "destination_path": str(destination),
+                            "reason": reason,
+                            },
+                        ),
+                    )
 
 
         except Exception as e:
-            logger.info(format_log_event({
-                "action": "failed",
-                "filename": source.name,
-                "error": str(e)
-            }))
+            logger.info(
+                format_log_event(
+                    {
+                        "action": "failed",
+                        "filename": source.name,
+                        "error": str(e),
+                        },
+                    ),
+                )
             continue
 
     return files

@@ -3,7 +3,8 @@ def build_extension_map(extensions_config: dict) -> dict:
         extension: category
         for category, extensions in extensions_config.items()
         for extension in extensions
-    }
+        }
+
 
 def classify_files(files: list, extension_map: dict) -> list:
     for file in files:

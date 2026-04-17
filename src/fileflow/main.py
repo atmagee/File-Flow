@@ -21,7 +21,7 @@ def main():
         paths["reports"],
         config["validation"]["filename_pattern"],
         config["validation"]["extensions"],
-        config.get("archive", {})
+        config.get("archive", {}),
         )
 
 
