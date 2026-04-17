@@ -20,7 +20,7 @@ def run_pipeline(
     logger = setup_logger(log_dir, run_id)
     logger.info(f"Pipeline started | run_id={run_id}")
 
-    extensions_map = build_extension_map(extensions_config)
+    extension_map = build_extension_map(extensions_config)
 
     # 1. Scan
     try:
