@@ -340,6 +340,7 @@ demo_data/output/reports/report_<run_id>.csv
 
 * Add unit tests
 * Improve commenting and hints
+* Add --help functionality
 * Improve CLI UX
 * Add scheduling support
 * Extend reporting (charts / summaries)
