@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles">
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
-    </list>
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated Dockerfile and created a new script to run the docker demo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -700,7 +694,39 @@
       <option name="project" value="LOCAL" />
       <updated>1776437104989</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Updated Dockerfile, .gitignore, .dockerignore and fixed the reporting of the number of archive files counted">
+      <option name="closed" value="true" />
+      <created>1776453843826</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1776453843826</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Updated Dockerfile, .gitignore, .dockerignore and fixed the reporting of the number of archive files counted">
+      <option name="closed" value="true" />
+      <created>1776453904815</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1776453904815</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Updated Dockerfile, .gitignore, .dockerignore and fixed the reporting of the number of archive files counted">
+      <option name="closed" value="true" />
+      <created>1776453918235</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1776453918235</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Updated Dockerfile and created a new script to run the docker demo">
+      <option name="closed" value="true" />
+      <created>1776455728412</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1776455728412</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -747,8 +773,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="renamed setting.py to settings.py and gave it a function to load the json config" />
-    <MESSAGE value="updated run configurations" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json congif" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json config" />
     <MESSAGE value="Removed extensions.txt and added a dictionary of valid functions to config.json to allow for files to be sorted into folders based on extension. Then updated the stages and pipeline programs to work with this new set up" />
@@ -772,6 +796,8 @@
     <MESSAGE value="Reformatted code for consistency" />
     <MESSAGE value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
     <MESSAGE value="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles" />
+    <MESSAGE value="Updated Dockerfile, .gitignore, .dockerignore and fixed the reporting of the number of archive files counted" />
+    <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Dockerfile and created a new script to run the docker demo" />
   </component>
 </project>

@@ -13,8 +13,8 @@ ENV PYTHONPATH=src
 # Make scripts executable
 RUN chmod +x scripts/*.sh
 
-# Default entrypoint = your run script
-ENTRYPOINT ["./scripts/run.sh"]
+# Default entrypoint
+ENTRYPOINT ["python", "-m", "fileflow.main"]
 
-# Default command (can be overridden)
+# Default command
 CMD []
