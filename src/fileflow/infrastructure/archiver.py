@@ -5,61 +5,58 @@ from pathlib import Path
 from fileflow.infrastructure.logger import format_log_event
 
 
-def archive_processed_files(files, processed_dir: str, days_threshold: int, archive_subfolder, logger) -> int:
-    processed_path = Path(processed_dir)
+def archive_processed_files(files, processed_dir: str, days_threshold: int, archive_subfolder, logger) -> None:
     cutoff = datetime.now() - timedelta(days = days_threshold)
 
-    archived_count = 0
+    for file_meta in files:
+        file = Path(file_meta.full_path)
 
-    # Recursively scan all files
-    for category_dir in processed_path.iterdir():
-        if not category_dir.is_dir():
+        # Skip if file no longer exists
+        if not file.exists():
             continue
 
-        for file in processed_path.rglob("*"):
+        # Only archive processed files (not quarantined)
+        if processed_dir not in str(file):
+            continue
 
-            # Skip non-files
-            if not file.is_file():
-                continue
+        # Skip archive folders
+        if archive_subfolder in file.parts:
+            continue
 
-            # Skip archive folders
-            if archive_subfolder in file.parts:
-                continue
+        try:
+            last_modified = datetime.fromtimestamp(file.stat().st_mtime)
 
-            try:
-                last_modified = datetime.fromtimestamp(file.stat().st_mtime)
+            if last_modified < cutoff:
 
-                if last_modified < cutoff:
+                archive_dir = file.parent / archive_subfolder
+                destination = archive_dir / file.name
 
-                    archive_dir = file.parent / archive_subfolder
-                    destination = archive_dir / file.name
+                archive_dir.mkdir(parents = True, exist_ok = True)
 
-                    archive_dir.mkdir(parents = True, exist_ok = True)
+                shutil.move(str(file), str(destination))
 
-                    shutil.move(str(file), str(destination))
-                    archived_count += 1
+                # Update metadata
+                file_meta.was_archived = True
+                file_meta.full_path = destination
 
-                    logger.info(
-                        format_log_event(
-                            {
-                                "action": "archived",
-                                "filename": file.name,
-                                "destination_path": str(destination),
-                                "archive_folder": archive_subfolder,
-                                "reason": f"older than {days_threshold} days",
-                                },
-                            ),
-                        )
-
-            except Exception as e:
                 logger.info(
                     format_log_event(
                         {
-                            "action": "failed",
+                            "action": "archived",
                             "filename": file.name,
-                            "error": str(e),
+                            "destination_path": str(destination),
+                            "reason": f"older than {days_threshold} days",
                             },
                         ),
                     )
 
-    return archived_count
+        except Exception as e:
+            logger.info(
+                format_log_event(
+                    {
+                        "action": "failed",
+                        "filename": file.name,
+                        "error": str(e),
+                        },
+                    ),
+                )

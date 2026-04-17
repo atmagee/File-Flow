@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Reformatted code for consistency and added basic Dockerfile and .dockerignore">
-      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create_demo_dataset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_demo_data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo_data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" afterDir="false" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -702,7 +692,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776424678903</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles">
+      <option name="closed" value="true" />
+      <created>1776437104989</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1776437104989</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -749,7 +747,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created a config.json for the project containing the file pattern and location for the extension file. As well as the paths for the data and output directories sub-directories" />
     <MESSAGE value="renamed setting.py to settings.py and gave it a function to load the json config" />
     <MESSAGE value="updated run configurations" />
     <MESSAGE value="Created main.py file and changed the stages programs to use the new json congif" />
@@ -774,6 +771,7 @@
     <MESSAGE value="Update logging to make more readable logs and update reporting to make csv reports and removed arrows to replace with '-&gt;'" />
     <MESSAGE value="Reformatted code for consistency" />
     <MESSAGE value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
+    <MESSAGE value="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code and made it work for a user defined directory and set it to default to data_input and create a demo setup and bashfiles" />
   </component>
 </project>
