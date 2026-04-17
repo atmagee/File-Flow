@@ -2,7 +2,7 @@ import re
 import shutil
 from pathlib import Path
 
-from fileflow.infrastructure import format_log_event
+from fileflow.infrastructure.logger import format_log_event
 
 
 def get_unique_destination(destination: Path) -> Path:
@@ -65,50 +65,41 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
             match = re.search(r'_(\d+)$', destination.stem)
             file.duplicate_index = int(match.group(1)) if match else 1
 
-            logger.info(
-                format_log_event(
-                    {
-                        "action": "renamed",
-                        "filename": source.name,
-                        "destination_path": str(destination),
-                        "reason": "duplicate filename",
-                        },
-                    ),
-                )
-
         else:
             file.duplicate_index = 0
 
-        # Ensure destination directory exists
+        # Move + Logging
         try:
             destination.parent.mkdir(parents = True, exist_ok = True)
             shutil.move(str(source), str(destination))
             file.full_path = destination
 
-            if action_type == "processed":
+            file.was_processed = True
+
+            # log duplicate
+            if file.is_duplicate:
                 logger.info(
                     format_log_event(
                         {
-                            "action": "processed",
+                            "action": "renamed",
                             "filename": source.name,
                             "destination_path": str(destination),
-                            "reason": "valid file",
-                            },
-                        ),
+                            "reason": "duplicate filename",
+                            }
+                        )
                     )
 
-            else:
-                logger.info(
-                    format_log_event(
-                        {
-                            "action": "quarantined",
-                            "filename": source.name,
-                            "destination_path": str(destination),
-                            "reason": reason,
-                            },
-                        ),
+            # log final action
+            logger.info(
+                format_log_event(
+                    {
+                        "action": action_type,
+                        "filename": source.name,
+                        "destination_path": str(destination),
+                        "reason": reason,
+                        }
                     )
-
+                )
 
         except Exception as e:
             logger.info(

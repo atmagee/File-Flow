@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai/logs/backlog_items/backlog_items.md" beforeDir="false" afterPath="$PROJECT_DIR$/ai/logs/backlog_items/backlog_items.md" afterDir="false" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Reformatted code for consistency and added basic Dockerfile and .dockerignore">
       <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/create_demo_dataset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_demo_data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo_data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,10 +97,10 @@
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\archive" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\input" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\config" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow" />
-      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\ai\logs\regex" />
     </key>
   </component>
@@ -665,7 +670,39 @@
       <option name="project" value="LOCAL" />
       <updated>1776416367640</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Update logging to make more readable logs and update reporting to make csv reports and removed arrows to replace with '-&gt;'">
+      <option name="closed" value="true" />
+      <created>1776424484782</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1776424484782</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Reformatted code for consistency">
+      <option name="closed" value="true" />
+      <created>1776424586243</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1776424586243</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Reformatted code for consistency">
+      <option name="closed" value="true" />
+      <created>1776424624005</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1776424624005</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Reformatted code for consistency and added basic Dockerfile and .dockerignore">
+      <option name="closed" value="true" />
+      <created>1776424678903</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1776424678903</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -712,9 +749,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First working program modules scan.py, run.py and validate.py as well as pipeline.py&#10;&#10;Configured __init__ file for the /pipeline/stages&#10;&#10;Renamed extensions to extensions.txt" />
-    <MESSAGE value="Trimmed the directory tree to remove directories and folders that are unused at the moment" />
-    <MESSAGE value="Added a run script for the bash shell&#10;&#10;Added more test files" />
     <MESSAGE value="Created a config.json for the project containing the file pattern and location for the extension file. As well as the paths for the data and output directories sub-directories" />
     <MESSAGE value="renamed setting.py to settings.py and gave it a function to load the json config" />
     <MESSAGE value="updated run configurations" />
@@ -737,6 +771,9 @@
     <MESSAGE value="fixed a typo in pipeline that caused failure at runtime" />
     <MESSAGE value="Merge remote-tracking branch 'origin/test' into test" />
     <MESSAGE value="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created an archiver for archiving files, a new script to create a data set to test with, fixed duplicate handling, updated reset_demo_data.sh to remove everything in input directory for testing" />
+    <MESSAGE value="Update logging to make more readable logs and update reporting to make csv reports and removed arrows to replace with '-&gt;'" />
+    <MESSAGE value="Reformatted code for consistency" />
+    <MESSAGE value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code for consistency and added basic Dockerfile and .dockerignore" />
   </component>
 </project>

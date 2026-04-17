@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 
 from fileflow.infrastructure import setup_logger, format_log_event, generate_report, archive_processed_files
 from fileflow.pipeline.stages import scan_folder, validate_files, build_extension_map, classify_files, move_files
@@ -97,12 +98,24 @@ def run_pipeline(
     # 5. Archive
     try:
         if archive_config.get("enabled", False):
-            archive_processed_files(
-                processed_dir,
-                archive_config.get("days_threshold", 30),
-                archive_config.get("subfolder_name", "archive"),
-                logger,
-                )
+
+            if not Path(processed_dir).exists():
+                logger.info(
+                    format_log_event(
+                        {
+                            "action": "system",
+                            "message": "Archive skipped (no processed folder found)",
+                            },
+                        ),
+                    )
+            else:
+                archive_processed_files(
+                    files,
+                    processed_dir,
+                    archive_config.get("days_threshold", 30),
+                    archive_config.get("archive_subfolder_name", "archive"),
+                    logger,
+                    )
 
         else:
             logger.info(
@@ -148,13 +161,13 @@ def run_pipeline(
                 ),
             )
 
-        logger.info(
-            format_log_event(
-                {
-                    "action": "system",
-                    "message": f"Pipeline finished | run_id={run_id}",
-                    },
-                ),
-            )
+    logger.info(
+        format_log_event(
+            {
+                "action": "system",
+                "message": f"Pipeline finished | run_id={run_id}",
+                },
+            ),
+        )
 
     return files

@@ -9,7 +9,7 @@ def build_extension_map(extensions_config: dict) -> dict:
 def classify_files(files: list, extension_map: dict) -> list:
     for file in files:
         if file.is_valid_extension:
-            file.category = extension_map[file.extension]
+            file.category = extension_map.get(file.extension, "invalid")
         else:
             file.category = "invalid"
 

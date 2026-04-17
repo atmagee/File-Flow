@@ -1,11 +1,11 @@
 #!/bin/bash
 
-INPUT_DIR="data/input"
+DEMO_DIR="demo_data/demo_input"
 
-mkdir -p "$INPUT_DIR"
-rm -f "$INPUT_DIR"/*
+mkdir -p "$DEMO_DIR"
+rm -f "$DEMO_DIR"/*
 
-echo "Generating large test dataset..."
+echo "Generating large test dataset in $DEMO_DIR..."
 
 # ---------- CONFIG ----------
 VALID_NAMES=("report" "run_john" "daily_log" "summary_file" "notes")
@@ -24,30 +24,27 @@ set_age() {
 for i in {1..20}; do
   name=${VALID_NAMES[$RANDOM % ${#VALID_NAMES[@]}]}
   ext=${VALID_EXTENSIONS[$RANDOM % ${#VALID_EXTENSIONS[@]}]}
-  file="$INPUT_DIR/${name}_${i}.${ext}"
-
-  touch "$file"
-
-  # Random age: 0–60 days
-  age=$((RANDOM % 60))
-  set_age "$file" "$age"
-done
-
-# ---------- CREATE INVALID NAME ----------
-for i in {1..10}; do
-  name=${INVALID_NAMES[$RANDOM % ${#INVALID_NAMES[@]}]}
-  ext=${VALID_EXTENSIONS[$RANDOM % ${#VALID_EXTENSIONS[@]}]}
-  file="$INPUT_DIR/${name}_${i}.${ext}"
+  file="$DEMO_DIR/${name}_${i}.${ext}"
 
   touch "$file"
   set_age "$file" $((RANDOM % 60))
 done
 
-# ---------- CREATE INVALID EXT ----------
+# ---------- INVALID NAME ----------
+for i in {1..10}; do
+  name=${INVALID_NAMES[$RANDOM % ${#INVALID_NAMES[@]}]}
+  ext=${VALID_EXTENSIONS[$RANDOM % ${#VALID_EXTENSIONS[@]}]}
+  file="$DEMO_DIR/${name}_${i}.${ext}"
+
+  touch "$file"
+  set_age "$file" $((RANDOM % 60))
+done
+
+# ---------- INVALID EXT ----------
 for i in {1..10}; do
   name=${VALID_NAMES[$RANDOM % ${#VALID_NAMES[@]}]}
   ext=${INVALID_EXTENSIONS[$RANDOM % ${#INVALID_EXTENSIONS[@]}]}
-  file="$INPUT_DIR/${name}_${i}.${ext}"
+  file="$DEMO_DIR/${name}_${i}.${ext}"
 
   touch "$file"
   set_age "$file" $((RANDOM % 60))
@@ -57,7 +54,7 @@ done
 for i in {1..10}; do
   name=${INVALID_NAMES[$RANDOM % ${#INVALID_NAMES[@]}]}
   ext=${INVALID_EXTENSIONS[$RANDOM % ${#INVALID_EXTENSIONS[@]}]}
-  file="$INPUT_DIR/${name}_${i}.${ext}"
+  file="$DEMO_DIR/${name}_${i}.${ext}"
 
   touch "$file"
   set_age "$file" $((RANDOM % 60))
@@ -65,21 +62,18 @@ done
 
 # ---------- DUPLICATES ----------
 for i in {1..5}; do
-  cp /dev/null "$INPUT_DIR/report_$i.txt"
+  cp /dev/null "$DEMO_DIR/report_$i.txt"
 done
 
 # ---------- EDGE CASES ----------
-# exactly 30 days old
-touch "$INPUT_DIR/edge_30_days.txt"
-set_age "$INPUT_DIR/edge_30_days.txt" 30
+touch "$DEMO_DIR/edge_30_days.txt"
+set_age "$DEMO_DIR/edge_30_days.txt" 30
 
-# very old file
-touch "$INPUT_DIR/very_old_file.txt"
-set_age "$INPUT_DIR/very_old_file.txt" 120
+touch "$DEMO_DIR/very_old_file.txt"
+set_age "$DEMO_DIR/very_old_file.txt" 120
 
-# very recent file
-touch "$INPUT_DIR/new_file.txt"
-set_age "$INPUT_DIR/new_file.txt" 0
+touch "$DEMO_DIR/new_file.txt"
+set_age "$DEMO_DIR/new_file.txt" 0
 
 echo "Dataset created successfully."
-echo "Total files: $(ls $INPUT_DIR | wc -l)"
+echo "Total files: $(ls "$DEMO_DIR" | wc -l)"

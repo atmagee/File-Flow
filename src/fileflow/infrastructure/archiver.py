@@ -2,10 +2,10 @@ import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from fileflow.infrastructure import format_log_event
+from fileflow.infrastructure.logger import format_log_event
 
 
-def archive_processed_files(processed_dir: str, days_threshold: int, archive_subfolder, logger) -> int:
+def archive_processed_files(files, processed_dir: str, days_threshold: int, archive_subfolder, logger) -> int:
     processed_path = Path(processed_dir)
     cutoff = datetime.now() - timedelta(days = days_threshold)
 
@@ -16,7 +16,7 @@ def archive_processed_files(processed_dir: str, days_threshold: int, archive_sub
         if not category_dir.is_dir():
             continue
 
-        for file in category_dir.iterdir():
+        for file in processed_path.rglob("*"):
 
             # Skip non-files
             if not file.is_file():
@@ -31,7 +31,7 @@ def archive_processed_files(processed_dir: str, days_threshold: int, archive_sub
 
                 if last_modified < cutoff:
 
-                    archive_dir = category_dir / archive_subfolder
+                    archive_dir = file.parent / archive_subfolder
                     destination = archive_dir / file.name
 
                     archive_dir.mkdir(parents = True, exist_ok = True)

@@ -2,14 +2,15 @@ import csv
 from pathlib import Path
 
 
-def generate_report(files: list, output_dir: str, run_id: str) -> None:
+def generate_report(files: list, report_dir: str, run_id: str) -> None:
     scanned = len(files)
     valid = sum(1 for f in files if f.is_valid_file)
     invalid = scanned - valid
 
-    processed = sum(1 for f in files if f.is_valid_file)
+    processed = sum(1 for f in files if f.is_valid_file and not f.is_duplicate)
     duplicates = sum(1 for f in files if f.is_duplicate)
-    quarantined = scanned - processed
+    quarantined = sum(1 for f in files if not f.is_valid_file)
+    archived = sum(1 for f in files if f.was_archived)
 
     invalid_name = sum(1 for f in files if not f.is_valid_name and f.is_valid_extension)
     invalid_ext = sum(1 for f in files if f.is_valid_name and not f.is_valid_extension)
@@ -21,8 +22,8 @@ def generate_report(files: list, output_dir: str, run_id: str) -> None:
         category = f.category
         category_counts[category] = category_counts.get(category, 0) + 1
 
-    report_file = Path(output_dir) / f"report_{run_id}.csv"
-    report_file.parent.mkdir(parents = True, exist_ok = True)
+    Path(report_dir).mkdir(parents = True, exist_ok = True)
+    report_file = Path(report_dir) / f"report_{run_id}.csv"
 
     with open(report_file, "w", newline = "") as f:
         writer = csv.writer(f)
@@ -36,6 +37,7 @@ def generate_report(files: list, output_dir: str, run_id: str) -> None:
         writer.writerow(["scanned_files", scanned])
         writer.writerow(["processed_files", processed])
         writer.writerow(["duplicate_files", duplicates])
+        writer.writerow(["archived_files", archived])
         writer.writerow(["quarantined_files", quarantined])
         writer.writerow(["invalid_name", invalid_name])
         writer.writerow(["invalid_extension", invalid_ext])
@@ -54,6 +56,7 @@ def generate_report(files: list, output_dir: str, run_id: str) -> None:
     print(f"\nValid files: {valid}")
     print(f"Processed files: {processed}")
     print(f"Duplicate files: {duplicates}")
+    print(f"Archived files: {archived}")
     print(f"\nInvalid files: {invalid}")
     print(f"Quarantined files: {quarantined}")
     print(f"  - Invalid name: {invalid_name}")

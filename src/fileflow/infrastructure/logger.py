@@ -4,6 +4,8 @@ from pathlib import Path
 
 
 def setup_logger(log_dir: str, run_id: str) -> logging.Logger:
+
+    Path(log_dir).mkdir(parents = True, exist_ok = True)
     log_file = Path(log_dir) / f"fileflow_{run_id}.log"
 
     logger = logging.getLogger(f"fileflow_{run_id}")
@@ -57,7 +59,7 @@ def format_log_event(event: dict) -> str:
     elif action_key == "quarantined":
         result = event["destination_path"]
     elif action_key == "archived":
-        result = event.get("destination_path") + "/"
+        result = event["destination_path"]
     else:
         result = ""
 

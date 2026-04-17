@@ -1,4 +1,4 @@
-from .settings import load_config
+from .settings import load_config, resolve_paths
 
 
-__all__ = ["load_config"]
+__all__ = ["load_config", "resolve_paths"]

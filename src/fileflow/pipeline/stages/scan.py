@@ -14,15 +14,18 @@ class FileMeta:
     is_valid_file: bool = None  # combination of filename and extension validation to be used in move
     is_duplicate: bool = False
     duplicate_index: int = 0
+    was_processed: bool = False
+    was_archived: bool = False
 
 
 # Defines a function that scans the files and returns a list of dataclasses
-def scan_folder(input_dir: str) -> list[FileMeta]:
+def scan_folder(input_dir: str, recursive: bool = False) -> list[FileMeta]:
     path = Path(input_dir)
-
     files = []
 
-    for file in path.iterdir():
+    iterator = path.rglob("*") if recursive else path.iterdir()
+
+    for file in iterator:
         if file.is_file():
             files.append(
                 FileMeta(
