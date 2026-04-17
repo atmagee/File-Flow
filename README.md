@@ -344,6 +344,7 @@ demo_data/output/reports/report_<run_id>.csv
 * Improve CLI UX
 * Add scheduling support
 * Extend reporting (charts / summaries)
+* Add colour coding to logging for the different actions
 
 ---
 
