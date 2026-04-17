@@ -19,9 +19,9 @@ echo " Running FileFlow in Docker (DEMO MODE)"
 echo "========================================"
 
 docker run -it \
-  -v "$(pwd)/demo_data:/app/demo_data" \
-  -v "$(pwd)/data:/app/data" \
-  fileflow ./scripts/run.sh --demo
+  -v "$(pwd -W)/demo_data:/app/demo_data" \
+  -v "$(pwd -W)/data:/app/data" \
+  fileflow --demo
 
 echo "========================================"
 echo " Demo complete"
