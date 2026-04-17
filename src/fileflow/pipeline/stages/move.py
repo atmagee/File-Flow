@@ -3,20 +3,16 @@ import shutil
 from pathlib import Path
 
 
-def get_unique_destination(destination: Path, ) -> Path:
+def get_unique_destination(destination: Path) -> Path:
 
     if not destination.exists():
         return destination
 
     parent = destination.parent
     suffix = destination.suffix
+    base = destination.stem
 
-    # Extract base + number suffix based on the pattern (_number)
-    match = re.match(r'^(?P<base>.+?)(?:_(?P<num>\d+))?$', destination.stem)
-    base = match.group("base")
-    num = match.group("num")
-
-    counter = int(num) + 1 if num else 1
+    counter = 1
 
     while True:
         new_name = f"{base}_{counter}{suffix}"
@@ -55,20 +51,20 @@ def move_files(files: list, base_processed: str, quarantine_dir: str) -> list:
         original_destination = destination
         destination = get_unique_destination(destination)
 
-        if destination != original_destination:
-            file.is_duplicate = True
+        file.is_duplicate = destination != original_destination
 
+        if file.is_duplicate:
             match = re.search(r'_(\d+)$', destination.stem)
-            file.duplicate_index = int(match.group(1)) if match else 0
+            file.duplicate_index = int(match.group(1)) if match else 1
         else:
-            file.is_duplicate = False
             file.duplicate_index = 0
 
         # Ensure destination directory exists
-        destination.parent.mkdir(parents = True, exist_ok = True)
-
-        shutil.move(str(source), str(destination))
-
-        file.full_path = destination
+        try:
+            destination.parent.mkdir(parents = True, exist_ok = True)
+            shutil.move(str(source), str(destination))
+            file.full_path = destination
+        except Exception:
+            continue # log later
 
     return files
