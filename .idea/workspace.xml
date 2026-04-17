@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Ensure if no directory is found one is made">
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai/logs/backlog_items/prompts.md" beforeDir="false" afterPath="$PROJECT_DIR$/ai/logs/backlog_items/prompts.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai/logs/regex/prompts.md" beforeDir="false" afterPath="$PROJECT_DIR$/ai/logs/regex/prompts.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/a12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/abc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/blank.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/john123_a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/run_john.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/input/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/classify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/validate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,25 +89,27 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SHELLCHECK.PATH": "C:\\Users\\aaron\\AppData\\Roaming\\JetBrains\\PyCharm2025.3\\plugins\\Shell Script\\shellcheck.exe",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "C:/Users/aaron/PycharmProjects/File-Flow",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "last_opened_file_path": "C:/Users/aaron/PycharmProjects/File-Flow/ai/logs/logs_and_reports",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Python"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\ai\logs\logs_and_reports" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\archive" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data\input" />
+      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\config" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\src\fileflow" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\data" />
-      <recent name="C:\Users\aaron\PycharmProjects\File-Flow\config" />
       <recent name="C:\Users\aaron\PycharmProjects\File-Flow\ai\logs\regex" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.FileFlow">
     <configuration name="FileFlow" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -592,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776363200686</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json">
+      <option name="closed" value="true" />
+      <created>1776364684863</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776364684863</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -639,7 +660,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated the list of extensions accepted and categorised them" />
     <MESSAGE value="Created test files" />
     <MESSAGE value="Added __init__ files for all package folders" />
     <MESSAGE value="Updated scan file so that it now uses a dataclass when storing data on each file scanned" />
@@ -664,6 +684,7 @@
     <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
     <MESSAGE value="Updated logging and reporting to use a single run_id for tracking" />
     <MESSAGE value="Ensure if no directory is found one is made" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ensure if no directory is found one is made" />
+    <MESSAGE value="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ensure if no directory is found one is made: now works for subfolders and can be configured in config.json" />
   </component>
 </project>

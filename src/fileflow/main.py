@@ -1,6 +1,6 @@
-from fileflow.config.settings import load_config
-from fileflow.infrastructure.setup import ensure_directories
-from fileflow.pipeline.pipeline import run_pipeline
+from fileflow.config import load_config
+from fileflow.infrastructure import ensure_directories
+from fileflow.pipeline import run_pipeline
 
 
 def main():
@@ -20,8 +20,8 @@ def main():
         paths["logs"],
         paths["reports"],
         config["validation"]["filename_pattern"],
-        config["validation"]["extensions"]
-    )
+        config["validation"]["extensions"],
+        )
 
 
 if __name__ == "__main__":

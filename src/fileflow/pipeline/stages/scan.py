@@ -9,11 +9,12 @@ class FileMeta:
     full_path: Path  # for moving the file
     name: str  # for validating the naming scheme
     extension: str  # for making sure the extension is on the valid extension list
-    last_modified: datetime  # for archiving old files
-    category: str = None  # used for classifying files later
-    is_valid_name: bool = None  # returns true for a valid file and false for an invalid file
-    is_valid_extension: bool = None  # returns true for a valid extension and false for an invalid extension
-    is_valid_file: bool = None  # returns true for a valid file and false for an invalid file
+    category: str = None  # for classifying files before move
+    is_valid_name: bool = None  # filename validation to be used in move
+    is_valid_extension: bool = None  # extension validation to be used in move
+    is_valid_file: bool = None  # combination of filename and extension validation to be used in move
+    is_duplicate: bool = False
+    duplicate_index: int = 0
 
 
 # Defines a function that scans the files and returns a list of dataclasses
@@ -26,11 +27,10 @@ def scan_folder(input_dir: str) -> list[FileMeta]:
         if file.is_file():
             files.append(
                 FileMeta(
-                    full_path=file.resolve(),
-                    name=file.stem,
-                    extension=file.suffix.lstrip("."),
-                    last_modified=datetime.fromtimestamp(file.stat().st_mtime)
+                    full_path = file.resolve(),
+                    name = file.stem,
+                    extension = file.suffix.lstrip("."),
+                    ),
                 )
-            )
 
     return files

@@ -15,17 +15,15 @@ def validate_files(files: list, extensions_config: dict, filename_pattern: str) 
     valid_extensions = get_valid_extensions(extensions_config)
 
     for file in files:
-        filename = file.name
-        extension = file.extension.lower()
 
         # Validate filename
-        if pattern.fullmatch(filename):
+        if pattern.fullmatch(file.name):
             file.is_valid_name = True
         else:
             file.is_valid_name = False
 
         # Validate extension
-        if extension in valid_extensions:
+        if file.extension in valid_extensions:
             file.is_valid_extension = True
         else:
             file.is_valid_extension = False
