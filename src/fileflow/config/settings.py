@@ -21,24 +21,39 @@ def resolve_paths(config: dict, args) -> dict:
     # -------------------------
     if args.demo:
         input_path = base_dir / "demo_data" / "demo_input"
+        root = base_dir / "demo_data"
+
     elif args.input:
-        input_path = Path(args.input).resolve()
+        input_path = Path(args.input)
+
+        if not input_path.is_absolute():
+            input_path = (base_dir / input_path).resolve()
+
+        # Create isolated data directory alongside input
+        parent = input_path.parent
+        input_name = input_path.name
+
+        # Avoid double prefixing
+        if input_name.startswith("sorted_"):
+            root = parent / input_name
+        else:
+            root = parent / f"sorted_{input_name}"
+
     else:
         input_path = base_dir / "data" / "default_input"
+        root = base_dir / "data"
 
-    input_path.mkdir(parents = True, exist_ok = True)
+    input_path.mkdir(parents=True, exist_ok=True)
 
     # -------------------------
-    # All other folders inside input root
+    # Output structure
     # -------------------------
-    root = input_path.parent
-
     paths = {
         "input": input_path,
         "processed": root / "processed",
         "quarantine": root / "quarantine",
         "logs": root / "output" / "logs",
         "reports": root / "output" / "reports",
-        }
+    }
 
     return paths

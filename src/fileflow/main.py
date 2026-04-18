@@ -6,30 +6,28 @@ from fileflow.pipeline import run_pipeline
 
 def main():
     parser = argparse.ArgumentParser(
-        description = "FileFlow CLI (defaults to data/default_input if no option provided)",
-        )
+        description="FileFlow: validate, organise, and report on files in a directory",
+    )
 
-    # Mutually exclusive input options
     group = parser.add_mutually_exclusive_group()
 
     group.add_argument(
         "--input",
-        type = str,
-        help = "Custom input folder",
-        )
+        type=str,
+        help="Path to a custom input folder (overrides default)",
+    )
 
     group.add_argument(
         "--demo",
-        action = "store_true",
-        help = "Use demo input folder",
-        )
+        action="store_true",
+        help="Use the demo input folder instead of the default input folder",
+    )
 
-    # Demo-only operations
     parser.add_argument(
-        "--reset-demo",
-        action = "store_true",
-        help = "Reset demo dataset (only valid with --demo)",
-        )
+        "--version",
+        action="version",
+        version="FileFlow 1.0",
+    )
 
     args = parser.parse_args()
 
@@ -37,22 +35,26 @@ def main():
     paths = resolve_paths(config, args)
 
     if args.demo:
-        print("Using demo input folder")
+        source_type = "demo"
     elif args.input:
-        print(f"Using custom input folder: {paths['input']}")
+        source_type = "custom"
     else:
-        print("Using default input folder")
+        source_type = "default"
+
+    print(f"Using {source_type} input folder: {paths['input']}")
+
+    validation_config = config.get("validation", {})
 
     run_pipeline(
-        str(paths["input"]),
-        str(paths["processed"]),
-        str(paths["quarantine"]),
-        str(paths["logs"]),
-        str(paths["reports"]),
-        config["validation"]["filename_pattern"],
-        config["validation"]["extensions"],
+        paths["input"],
+        paths["processed"],
+        paths["quarantine"],
+        paths["logs"],
+        paths["reports"],
+        validation_config.get("filename_pattern"),
+        validation_config.get("extensions"),
         config.get("archive", {}),
-        )
+    )
 
 
 if __name__ == "__main__":

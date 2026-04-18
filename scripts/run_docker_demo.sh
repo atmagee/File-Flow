@@ -3,10 +3,10 @@
 set -e  # stop script on any error
 
 echo "========================================"
-echo " Resetting demo data"
+echo " Resetting demo"
 echo "========================================"
 
-./scripts/reset_demo_data.sh
+./scripts/reset_demo.sh
 
 echo "========================================"
 echo " Creating demo dataset"
@@ -20,7 +20,6 @@ echo "========================================"
 
 docker run -it \
   -v "$(pwd -W)/demo_data:/app/demo_data" \
-  -v "$(pwd -W)/data:/app/data" \
   fileflow --demo
 
 echo "========================================"

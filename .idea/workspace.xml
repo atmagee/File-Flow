@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated README.md">
-      <change afterPath="$PROJECT_DIR$/ai/usage.md" afterDir="false" />
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Condensed the AI usage log and removed old AI usage logs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run_docker_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_docker_demo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,29 +122,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="true" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
@@ -252,91 +237,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="File-Flow" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.FileFlow" />
       <item itemvalue="Python.main (1)" />
@@ -369,30 +269,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776244670418</updated>
-    </task>
-    <task id="LOCAL-00001" summary="First commit:&#10;Setting up the file structure, creating temporary fiels in directories to inform future use and creating and logging the creation of the regex for file validation">
-      <option name="closed" value="true" />
-      <created>1776259526911</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1776259526912</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Updated the list of extensions accepted and categorised them">
-      <option name="closed" value="true" />
-      <created>1776264605760</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1776264605760</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Created test files">
-      <option name="closed" value="true" />
-      <created>1776264636651</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1776264636651</updated>
     </task>
     <task id="LOCAL-00004" summary="Added __init__ files for all package folders">
       <option name="closed" value="true" />
@@ -762,7 +638,31 @@
       <option name="project" value="LOCAL" />
       <updated>1776461554477</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Updated README.md with new future improvements. Updated logger.py to print full destination path for renamed files">
+      <option name="closed" value="true" />
+      <created>1776462679088</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1776462679088</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Created a smaller ai usage log">
+      <option name="closed" value="true" />
+      <created>1776462791518</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1776462791518</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Condensed the AI usage log and removed old AI usage logs">
+      <option name="closed" value="true" />
+      <created>1776545924741</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1776545924741</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -809,9 +709,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding recreated project settings after they broke the colour coding in python files" />
-    <MESSAGE value="update workspace.xml" />
-    <MESSAGE value="update workspace.xml" />
     <MESSAGE value="Commit older backlog items" />
     <MESSAGE value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
     <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
@@ -834,6 +731,9 @@
     <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo" />
     <MESSAGE value="Updated Dockerfile and created a new script to run the docker demo now working properly" />
     <MESSAGE value="Updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+    <MESSAGE value="Updated README.md with new future improvements. Updated logger.py to print full destination path for renamed files" />
+    <MESSAGE value="Created a smaller ai usage log" />
+    <MESSAGE value="Condensed the AI usage log and removed old AI usage logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Condensed the AI usage log and removed old AI usage logs" />
   </component>
 </project>
