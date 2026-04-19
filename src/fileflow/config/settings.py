@@ -13,47 +13,57 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def resolve_paths(config: dict, args) -> dict:
+def resolve_paths(input_path: str = None, demo: bool = False) -> dict:
+
     base_dir = Path(__file__).resolve().parents[3]
 
     # -------------------------
-    # Input selection
+    # Input folder
     # -------------------------
-    if args.demo:
-        input_path = base_dir / "demo_data" / "demo_input"
+    if demo:
+        input_dir = base_dir / "demo_data" / "demo_input"
         root = base_dir / "demo_data"
+        source_type = "demo"
 
-    elif args.input:
-        input_path = Path(args.input)
+    elif input_path:
 
-        if not input_path.is_absolute():
-            input_path = (base_dir / input_path).resolve()
+        input_dir = Path(input_path).expanduser()
 
-        # Create isolated data directory alongside input
-        parent = input_path.parent
-        input_name = input_path.name
+        if not input_dir.is_absolute():
+            input_dir = (base_dir / input_dir).resolve()
 
-        # Avoid double prefixing
+        parent = input_dir.parent
+        input_name = input_dir.name
+
         if input_name.startswith("sorted_"):
             root = parent / input_name
         else:
             root = parent / f"sorted_{input_name}"
 
-    else:
-        input_path = base_dir / "data" / "default_input"
-        root = base_dir / "data"
+        source_type = "custom"
 
-    input_path.mkdir(parents=True, exist_ok=True)
+    else:
+        input_dir = base_dir / "data" / "default_input"
+        root = base_dir / "data"
+        source_type = "default"
+
+    # Ensure input folder exists
+    input_dir.mkdir(parents = True, exist_ok = True)
+
+    # Ensure output root exists
+    root.mkdir(parents = True, exist_ok = True)
 
     # -------------------------
     # Output structure
     # -------------------------
     paths = {
-        "input": input_path,
+        "input": input_dir,
+        "root": root,
         "processed": root / "processed",
         "quarantine": root / "quarantine",
         "logs": root / "output" / "logs",
         "reports": root / "output" / "reports",
-    }
+        "source_type": source_type,
+        }
 
     return paths

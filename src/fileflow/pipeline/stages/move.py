@@ -81,7 +81,7 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
         try:
             destination.parent.mkdir(parents = True, exist_ok = True)
             shutil.move(str(source), str(destination))
-            file.full_path = destination
+            file.full_path = Path(destination)
 
             # log duplicate
             if file.is_duplicate:

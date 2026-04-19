@@ -4,12 +4,12 @@
     <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Condensed the AI usage log and removed old AI usage logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/reset_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/create_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_demo_data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/run_docker_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_docker_demo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileflow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/archiver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/infrastructure/reporter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />

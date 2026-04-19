@@ -1,4 +1,7 @@
 #!/bin/bash
+# ========================================
+# Run the demo in Docker
+# ========================================
 
 set -e  # stop script on any error
 

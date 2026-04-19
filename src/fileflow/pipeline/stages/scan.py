@@ -40,7 +40,7 @@ def scan_folder(input_dir: str, recursive: bool = False) -> list[FileMeta]:
         if file.is_file():
             files.append(
                 FileMeta(
-                    full_path = file.resolve(),
+                    full_path = file,
                     name = file.stem,
                     extension = file.suffix.lstrip("."),
                     ),
