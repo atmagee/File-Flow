@@ -1,12 +1,4 @@
 {
-  "structure": {
-    "quarantine_subfolders": [
-      "invalid_filename",
-      "invalid_extension",
-      "invalid_both"
-    ]
-  },
-
   "archive": {
     "enabled": true,
     "days_threshold": 30,

@@ -16,7 +16,7 @@ def archive_processed_files(files, processed_dir: str, days_threshold: int, arch
             continue
 
         # Only archive processed files (not quarantined)
-        if processed_dir not in str(file):
+        if Path(processed_dir) not in file.parents:
             continue
 
         # Skip archive folders

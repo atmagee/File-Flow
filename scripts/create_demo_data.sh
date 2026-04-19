@@ -1,4 +1,7 @@
 #!/bin/bash
+# ========================================
+# Generate demo dataset
+# ========================================
 
 DEMO_DIR="demo_data/demo_input"
 
@@ -13,59 +16,56 @@ INVALID_NAMES=("InvalidName" "john123" "bad-name" "FILE" "test__file")
 VALID_EXTENSIONS=("txt" "md" "pdf" "jpg")
 INVALID_EXTENSIONS=("py" "exe" "xml" "MP3")
 
-# ---------- FUNCTION: set timestamp ----------
+# ---------- FUNCTION: set file timestamp ----------
 set_age() {
   local file=$1
   local days=$2
   touch -d "$days days ago" "$file"
 }
 
-# ---------- CREATE VALID FILES ----------
+# ---------- CREATE FILES ----------
+# Valid files
 for i in {1..20}; do
   name=${VALID_NAMES[$RANDOM % ${#VALID_NAMES[@]}]}
   ext=${VALID_EXTENSIONS[$RANDOM % ${#VALID_EXTENSIONS[@]}]}
   file="$DEMO_DIR/${name}_${i}.${ext}"
-
   touch "$file"
   set_age "$file" $((RANDOM % 60))
 done
 
-# ---------- INVALID NAME ----------
+# Invalid names
 for i in {1..10}; do
   name=${INVALID_NAMES[$RANDOM % ${#INVALID_NAMES[@]}]}
   ext=${VALID_EXTENSIONS[$RANDOM % ${#VALID_EXTENSIONS[@]}]}
   file="$DEMO_DIR/${name}_${i}.${ext}"
-
   touch "$file"
   set_age "$file" $((RANDOM % 60))
 done
 
-# ---------- INVALID EXT ----------
+# Invalid extensions
 for i in {1..10}; do
   name=${VALID_NAMES[$RANDOM % ${#VALID_NAMES[@]}]}
   ext=${INVALID_EXTENSIONS[$RANDOM % ${#INVALID_EXTENSIONS[@]}]}
   file="$DEMO_DIR/${name}_${i}.${ext}"
-
   touch "$file"
   set_age "$file" $((RANDOM % 60))
 done
 
-# ---------- INVALID BOTH ----------
+# Invalid both
 for i in {1..10}; do
   name=${INVALID_NAMES[$RANDOM % ${#INVALID_NAMES[@]}]}
   ext=${INVALID_EXTENSIONS[$RANDOM % ${#INVALID_EXTENSIONS[@]}]}
   file="$DEMO_DIR/${name}_${i}.${ext}"
-
   touch "$file"
   set_age "$file" $((RANDOM % 60))
 done
 
-# ---------- DUPLICATES ----------
+# Duplicates
 for i in {1..5}; do
   cp /dev/null "$DEMO_DIR/report_$i.txt"
 done
 
-# ---------- EDGE CASES ----------
+# Edge cases
 touch "$DEMO_DIR/edge_30_days.txt"
 set_age "$DEMO_DIR/edge_30_days.txt" 30
 

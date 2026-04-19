@@ -4,12 +4,15 @@ from pathlib import Path
 
 def generate_report(files: list, report_dir: str, run_id: str) -> None:
     scanned = len(files)
-    valid = sum(1 for f in files if f.is_valid_file)
-    invalid = scanned - valid
 
-    processed = sum(1 for f in files if f.is_valid_file and not f.is_duplicate)
+    # Core metrics
+    valid = sum(1 for f in files if f.is_valid_file)
+    invalid = sum(1 for f in files if not f.is_valid_file)
+
+    processed = sum(1 for f in files if f.was_processed)
+    quarantined = sum(1 for f in files if f.was_quarantined)
+
     duplicates = sum(1 for f in files if f.is_duplicate)
-    quarantined = sum(1 for f in files if not f.is_valid_file)
     archived = sum(1 for f in files if f.was_archived)
 
     invalid_name = sum(1 for f in files if not f.is_valid_name and f.is_valid_extension)
@@ -35,13 +38,20 @@ def generate_report(files: list, report_dir: str, run_id: str) -> None:
         # Metrics
         writer.writerow(["metric", "value"])
         writer.writerow(["scanned_files", scanned])
+
+        writer.writerow(["valid_files", valid])
         writer.writerow(["processed_files", processed])
+
+        writer.writerow(["invalid_files", invalid])
+        writer.writerow(["quarantined_files", quarantined])
+
         writer.writerow(["duplicate_files", duplicates])
         writer.writerow(["archived_files", archived])
-        writer.writerow(["quarantined_files", quarantined])
+
         writer.writerow(["invalid_name", invalid_name])
         writer.writerow(["invalid_extension", invalid_ext])
         writer.writerow(["invalid_both", invalid_both])
+
         writer.writerow([])
 
         # Categories
@@ -53,12 +63,17 @@ def generate_report(files: list, report_dir: str, run_id: str) -> None:
     print("\n=== FILEFLOW REPORT ===")
     print(f"\nRun ID: {run_id}")
     print(f"\nScanned files: {scanned}")
+
     print(f"\nValid files: {valid}")
     print(f"Processed files: {processed}")
-    print(f"Duplicate files: {duplicates}")
-    print(f"Archived files: {archived}")
+
     print(f"\nInvalid files: {invalid}")
     print(f"Quarantined files: {quarantined}")
+
+    print(f"\nDuplicate files: {duplicates}")
+    print(f"Archived files: {archived}")
+
+    print(f"\nInvalid breakdown:")
     print(f"  - Invalid name: {invalid_name}")
     print(f"  - Invalid extension: {invalid_ext}")
     print(f"  - Invalid both: {invalid_both}")

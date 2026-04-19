@@ -13,32 +13,57 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def resolve_paths(config: dict, args) -> dict:
+def resolve_paths(input_path: str = None, demo: bool = False) -> dict:
+
     base_dir = Path(__file__).resolve().parents[3]
 
     # -------------------------
-    # Input selection
+    # Input folder
     # -------------------------
-    if args.demo:
-        input_path = base_dir / "demo_data" / "demo_input"
-    elif args.input:
-        input_path = Path(args.input).resolve()
+    if demo:
+        input_dir = base_dir / "demo_data" / "demo_input"
+        root = base_dir / "demo_data"
+        source_type = "demo"
+
+    elif input_path:
+
+        input_dir = Path(input_path).expanduser()
+
+        if not input_dir.is_absolute():
+            input_dir = (base_dir / input_dir).resolve()
+
+        parent = input_dir.parent
+        input_name = input_dir.name
+
+        if input_name.startswith("sorted_"):
+            root = parent / input_name
+        else:
+            root = parent / f"sorted_{input_name}"
+
+        source_type = "custom"
+
     else:
-        input_path = base_dir / "data" / "default_input"
+        input_dir = base_dir / "data" / "default_input"
+        root = base_dir / "data"
+        source_type = "default"
 
-    input_path.mkdir(parents = True, exist_ok = True)
+    # Ensure input folder exists
+    input_dir.mkdir(parents = True, exist_ok = True)
+
+    # Ensure output root exists
+    root.mkdir(parents = True, exist_ok = True)
 
     # -------------------------
-    # All other folders inside input root
+    # Output structure
     # -------------------------
-    root = input_path.parent
-
     paths = {
-        "input": input_path,
+        "input": input_dir,
+        "root": root,
         "processed": root / "processed",
         "quarantine": root / "quarantine",
         "logs": root / "output" / "logs",
         "reports": root / "output" / "reports",
+        "source_type": source_type,
         }
 
     return paths

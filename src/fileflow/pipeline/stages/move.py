@@ -12,12 +12,17 @@ def get_unique_destination(destination: Path) -> Path:
 
     parent = destination.parent
     suffix = destination.suffix
-    base = destination.stem
+    stem = destination.stem
 
-    counter = 1
+    match = re.match(r"^(.*?)(?:_(\d+))?$", stem)
+
+    base_name = match.group(1)
+    number = int(match.group(2)) if match.group(2) else 0
+
+    counter = number + 1
 
     while True:
-        new_name = f"{base}_{counter}{suffix}"
+        new_name = f"{base_name}_{counter}{suffix}"
         new_path = parent / new_name
 
         if not new_path.exists():
@@ -39,21 +44,25 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
             if not file.is_valid_name and not file.is_valid_extension:
                 subfolder = "invalid_both"
                 reason = "invalid name and extension"
+
             elif not file.is_valid_name:
                 subfolder = "invalid_filename"
                 reason = "invalid naming format"
+
             else:
                 subfolder = "invalid_extension"
                 reason = "extension not allowed"
 
             destination = quarantine_path / subfolder / source.name
             action_type = "quarantined"
+            file.was_quarantined = True
 
         # Valid -> processed
         else:
             destination = processed_path / file.category / source.name
             action_type = "processed"
             reason = "valid file"
+            file.was_processed = True
 
         # Duplicate handling
         original_destination = destination
@@ -72,9 +81,7 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
         try:
             destination.parent.mkdir(parents = True, exist_ok = True)
             shutil.move(str(source), str(destination))
-            file.full_path = destination
-
-            file.was_processed = True
+            file.full_path = Path(destination)
 
             # log duplicate
             if file.is_duplicate:
@@ -85,8 +92,8 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
                             "filename": source.name,
                             "destination_path": str(destination),
                             "reason": "duplicate filename",
-                            }
-                        )
+                            },
+                        ),
                     )
 
             # log final action
@@ -97,8 +104,8 @@ def move_files(files: list, base_processed: str, quarantine_dir: str, logger) ->
                         "filename": source.name,
                         "destination_path": str(destination),
                         "reason": reason,
-                        }
-                    )
+                        },
+                    ),
                 )
 
         except Exception as e:

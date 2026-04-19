@@ -1,57 +1,38 @@
 import argparse
 
-from fileflow.config import load_config, resolve_paths
-from fileflow.pipeline import run_pipeline
+from fileflow import run_pipeline
+from fileflow.config import resolve_paths, load_config
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description = "FileFlow CLI (defaults to data/default_input if no option provided)",
+        description = "FileFlow: validate, organise, and report on files in a folder",
         )
 
-    # Mutually exclusive input options
-    group = parser.add_mutually_exclusive_group()
-
-    group.add_argument(
-        "--input",
-        type = str,
-        help = "Custom input folder",
-        )
-
-    group.add_argument(
-        "--demo",
-        action = "store_true",
-        help = "Use demo input folder",
-        )
-
-    # Demo-only operations
-    parser.add_argument(
-        "--reset-demo",
-        action = "store_true",
-        help = "Reset demo dataset (only valid with --demo)",
-        )
+    parser.add_argument("--input", type = str, help = "Path to a custom input folder")
+    parser.add_argument("--demo", action = "store_true", help = "Use demo input folder")
+    parser.add_argument("--version", action = "version", version = "FileFlow 1.0")
 
     args = parser.parse_args()
 
-    config = load_config()
-    paths = resolve_paths(config, args)
+    # Resolve paths (cross-platform, Windows or Linux)
+    paths = resolve_paths(input_path = args.input, demo = args.demo)
 
-    if args.demo:
-        print("Using demo input folder")
-    elif args.input:
-        print(f"Using custom input folder: {paths['input']}")
-    else:
-        print("Using default input folder")
+    print(f"Using {paths['source_type']} input folder: {paths['input']}")
+
+    # Load validation/config
+    config = load_config()
+    validation_config = config.get("validation", {})
 
     run_pipeline(
-        str(paths["input"]),
-        str(paths["processed"]),
-        str(paths["quarantine"]),
-        str(paths["logs"]),
-        str(paths["reports"]),
-        config["validation"]["filename_pattern"],
-        config["validation"]["extensions"],
-        config.get("archive", {}),
+        input_dir = paths["input"],
+        processed_dir = paths["processed"],
+        quarantine_dir = paths["quarantine"],
+        log_dir = paths["logs"],
+        report_dir = paths["reports"],
+        filename_pattern = validation_config.get("filename_pattern"),
+        extensions_config = validation_config.get("extensions"),
+        archive_config = config.get("archive", {}),
         )
 
 
