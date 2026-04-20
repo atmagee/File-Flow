@@ -6,25 +6,25 @@ from pathlib import Path
 @dataclass
 class FileMeta:
 
-    # --- Core file metadata (from scan stage) ---
+    # --- Core file metadata ---
     full_path: Path  # Absolute path (used for moving/renaming)
     name: str  # Filename without extension (used for validation)
     extension: str  # File extension (used for validation/classification)
 
-    # --- Classification (set during classify stage) ---
+    # --- Classification ---
     category: str = None  # Target category (e.g. text, images, documents)
 
-    # --- Validation results (set during validate stage) ---
+    # --- Validation results ---
     is_valid_name: bool = None  # Matches filename pattern
     is_valid_extension: bool = None  # Extension is allowed
     is_valid_file: bool = None  # Combined validation result
 
-    # --- Duplicate handling (set during move stage) ---
+    # --- Duplicate handling ---
     is_duplicate: bool = False  # True if renamed due to conflict
     duplicate_index: int = 0  # Suffix index (_1, _2, ...)
 
-    # --- Pipeline state tracking (set during execution) ---
-    was_processed: bool = False  # Successfully moved to processed/
+    # --- File state tracking ---
+    was_processed: bool = False  # Moved to processed/
     was_quarantined: bool = False  # Moved to quarantine/
     was_archived: bool = False  # Moved to archive/
 

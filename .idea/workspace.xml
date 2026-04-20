@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Condensed the AI usage log and removed old AI usage logs">
+    <list default="true" id="935241fd-7803-496f-be49-dd58eaaab087" name="Changes" comment="Updated ReadMe and made some small formatting changes to the codebase to remove problems when running in docker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create_demo_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create_demo_data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/reset_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/reset_demo.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run_docker_demo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_docker_demo.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/move.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileflow/pipeline/stages/scan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,14 +261,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776244670418</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added __init__ files for all package folders">
-      <option name="closed" value="true" />
-      <created>1776265903612</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1776265903612</updated>
     </task>
     <task id="LOCAL-00005" summary="Updated scan file so that it now uses a dataclass when storing data on each file scanned">
       <option name="closed" value="true" />
@@ -662,7 +646,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776545924741</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Updated ReadMe and made some small formatting changes to the codebase to remove problems when running in docker">
+      <option name="closed" value="true" />
+      <created>1776613018371</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1776613018371</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -709,7 +701,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Commit older backlog items" />
     <MESSAGE value="Created logging and report functionality by creating a program for logging and a program for reporting then updated the pipeline and main" />
     <MESSAGE value="Updated logging and reporting to create timestamped reports and logs as well as print them to the console/terminal" />
     <MESSAGE value="Updated logging and reporting to use a single run_id for tracking" />
@@ -734,6 +725,7 @@
     <MESSAGE value="Updated README.md with new future improvements. Updated logger.py to print full destination path for renamed files" />
     <MESSAGE value="Created a smaller ai usage log" />
     <MESSAGE value="Condensed the AI usage log and removed old AI usage logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Condensed the AI usage log and removed old AI usage logs" />
+    <MESSAGE value="Updated ReadMe and made some small formatting changes to the codebase to remove problems when running in docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated ReadMe and made some small formatting changes to the codebase to remove problems when running in docker" />
   </component>
 </project>

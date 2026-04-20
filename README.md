@@ -177,19 +177,21 @@ Use `/c/...` style paths in Git Bash, for example:
 ## 🔄 Pipeline Flow
 
 ```text
-Input Directory
-       ↓
-    [Scan]
-       ↓
-  [Validate] → Invalid → Quarantine
-       ↓
-  [Classify]
-       ↓
-    [Move] → Processed
-       ↓
-   [Archive]
-       ↓
-[Logs + Report]
+             Input
+               ↓
+             Scan ----------------
+               ↓                 |
+            Validate             |
+               ↓                 |
+            Classify             |   
+               ↓              Logging
+             Move        (entire pipeline)
+            ↙     ↘              |
+     Processed   Quarantine      |
+         ↓           ↓           |                
+      Archive        ↓           |
+            ↘      ↙             |
+             Report --------------
 ```
 
 Each stage has a single responsibility and operates independently.
